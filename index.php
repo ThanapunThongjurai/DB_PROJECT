@@ -32,22 +32,22 @@ require_once('connect.php');
   <div class="container">
     <div class="row row-cols-1 row-cols-md-3">
       <?php
-      $stmt = $conn->prepare("SELECT user_username,user_password,user_fullname FROM `user` WHERE user_username = '$user'");
+      $stmt = $conn->prepare("SELECT * FROM `item`");
       $stmt->execute();                               // run sql before
-      while (true) { ?>
-
+      while ($result = $stmt->fetch()) {
+      ?>
         <div class="col mb-3">
           <div class="card">
-            <img src="..." class="card-img-top" alt="...">
+            <!--img src="images/gallery/<?php echo $result; ?>.jpg"-->
+            <img src="image/<?php echo $result["imagelocation"] ?>.png" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <h5 class="card-title"><?php $result["preview"] ?></h5>
+              <p class="card-text">Amoung us charlacter</p>
             </div>
           </div>
         </div><?php
-            }
-              ?>
-
+      }?>
+<!--
       <div class="col mb-3">
         <div class="card">
           <img src="..." class="card-img-top" alt="...">
@@ -87,7 +87,7 @@ require_once('connect.php');
     </div>
   </div>
 
-
+  -->
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="js/jquery-3.5.1.slim.min.js"></script>
