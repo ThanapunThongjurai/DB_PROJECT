@@ -20,20 +20,33 @@
 </style>
 
 <body>
-
-
   <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
+
+
+
   <div class="container-fluid">
     <div class="row">
 
-    
+
     </div>
   </div>
   <div class="container">
+    <?php
+    if ($_GET['msg'] == "invalid") {
+    ?>
+    <div class="text-center col-md-6 offset-md-3 ">
+      <div class="alert alert-danger" role="alert">
+      invalid
+      </div>
+    </div>
+    <?php
+    }
+    ?>
+
     <form action="checklogin.php" method="POST">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input name="USERNAME"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <input name="USERNAME" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
         <small id="emailHelp" class="form-text text-muted">ใส่เดี่ยว</small>
       </div>
       <div class="form-group">

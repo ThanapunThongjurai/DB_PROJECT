@@ -1,5 +1,10 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
+
 <html lang="en">
+
 
 <head>
   <!-- Required meta tags -->
@@ -28,7 +33,7 @@
       <h1>หน้าแรก</h1>
     </div>
   </div>
-  
+
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
