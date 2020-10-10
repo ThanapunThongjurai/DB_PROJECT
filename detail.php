@@ -8,51 +8,60 @@ $stmt->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-  <title>Hello, world!</title>
+    <title>Hello, world!</title>
 </head>
 <style tpye="text/css">
-  body {
-    background-image: url('image/wall.jpg');
-    -webkit-background-size: cover;
-    background-attachment: fixed;
-  }
+    body {
+        background-image: url('image/wall.jpg');
+        -webkit-background-size: cover;
+        background-attachment: fixed;
+    }
 </style>
 
 <body>
 
 
-  <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-3">
-      <?php
-      
-      while ($id_item = $stmt->fetch()) {
-      ?>
-        <div class="col mb-3">
-          <div class="card">
-            <!--img src="images/gallery/<?php echo $id_item; ?>.jpg"-->
-            <img src="image/<?php echo $id_item["imagelocation"] ?>" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"><?php $id_item["preview"] ?></h5>
-              <p class="card-text">Amoung us charlacter item_name <?php echo $id_item["item_name"] ?></p>
-            </div>
-            <button type="button" class="btn btn-primary"><h1>ซื้อกูสิ</h1></button>
-          </div>
-        </div><?php
-      }?>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="js/jquery-3.5.1.slim.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+    <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
+    <div class="container">
+        <div class="row">
+            <?php
+
+            while ($id_item = $stmt->fetch()) {
+            ?>
+                <div class="col-sm-4">
+                    <img src="image/<?php echo $id_item["imagelocation"] ?>" class="card-img-top" alt="...">
+                    <button type="button" class="btn btn-primary">
+                        <a class="btn btn-primary" href="cart.php?id_item=<?php echo $id_item['id_item']; ?>" role="button">
+                            <h1>หยิบกูลงตะกร้า</h1>
+                        </a>
+                    </button>
+                </div>
+
+                <div class="col-sm-8">
+                    <p class="">ชื่อสินค้า : <?php echo $id_item["item_name"] ?></p>
+                    <p class="">ราคา : <?php echo $id_item["item_price"] ?></p>
+                    <p class="">คลัง : <?php echo $id_item["item_amount"] ?></p>
+                    <p class="">คำอธิบาย : <?php echo $id_item["item_disc"] ?></p>
+                </div>
+        </div>
+
+    </div>
+    </div><?php
+            } ?>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery-3.5.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

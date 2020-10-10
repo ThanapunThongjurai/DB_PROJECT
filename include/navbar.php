@@ -36,7 +36,7 @@ session_start();
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">สมัครสมาชิก</a>
+          <a class="nav-link" href="register.php">สมัครสมาชิก</a>
         </li>
       <?php
       }
