@@ -1,12 +1,13 @@
 <?php
 session_start();
 require_once('connect.php');
+
+$id_item = $_GET['id_item'];
+$stmt = $conn->prepare("SELECT * FROM `item` WHERE id_item = $id_item");
+$stmt->execute();
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
-
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
@@ -32,19 +33,18 @@ require_once('connect.php');
   <div class="container">
     <div class="row row-cols-1 row-cols-md-3">
       <?php
-      $stmt = $conn->prepare("SELECT * FROM `item`");
-      $stmt->execute();                               // run sql before
-      while ($result = $stmt->fetch()) {
+      
+      while ($id_item = $stmt->fetch()) {
       ?>
         <div class="col mb-3">
           <div class="card">
-            <!--img src="images/gallery/<?php echo $result; ?>.jpg"-->
-            <img src="image/<?php echo $result["imagelocation"] ?>" class="card-img-top" alt="...">
+            <!--img src="images/gallery/<?php echo $id_item; ?>.jpg"-->
+            <img src="image/<?php echo $id_item["imagelocation"] ?>" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title"><?php $result["preview"]; ?></h5>
-              <p class="card-text">Amoung us charlacter item_name <?php echo $result["item_name"] ?></p>
+              <h5 class="card-title"><?php $id_item["preview"] ?></h5>
+              <p class="card-text">Amoung us charlacter item_name <?php echo $id_item["item_name"] ?></p>
             </div>
-            <a class="btn btn-primary" href="detail.php?id_item=<?php echo $result['id_item']; ?>" role="button"><h1>ซื้อกูสิ</h1></a>
+            <button type="button" class="btn btn-primary"><h1>ซื้อกูสิ</h1></button>
           </div>
         </div><?php
       }?>
