@@ -31,7 +31,6 @@ session_start();
       <?php
       } else {
       ?>
-
         <li class="nav-item">
           <a class="nav-link" href="login.php">เข้าสู่ระบบ</a>
         </li>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('connect.php');
 ?>
 <!DOCTYPE html>
 
@@ -28,9 +29,61 @@ session_start();
 
 
   <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
-  <div class="container-fluid">
-    <div class="row">
-      <h1>หน้าแรก</h1>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-3">
+      <?php
+      $stmt = $conn->prepare("SELECT user_username,user_password,user_fullname FROM `user` WHERE user_username = '$user'");
+      $stmt->execute();                               // run sql before
+      while (true) { ?>
+
+        <div class="col mb-3">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div><?php
+            }
+              ?>
+
+      <div class="col mb-3">
+        <div class="card">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <div class="card">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <div class="card">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <div class="card">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
