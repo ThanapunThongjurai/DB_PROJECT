@@ -1,4 +1,9 @@
 <?php
+require_once('connect.php');
+if ($_SESSION["user_status"] == 0) //0 is normal 
+{
+  header("Location: login.php");
+}
 $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 ?>
 <!DOCTYPE html>
@@ -34,46 +39,54 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
         </div>
     </div>
     <div class="container">
-    <?php
-    if ($msg == 'invalid') {
-      ?>
-      <div class="text-center col-md-6 offset-md-3 ">
-        <div class="alert alert-danger" role="alert">
-          invalid
-        </div>
-      </div>
-      <?php
-    }
-    ?>
+        <?php
+        if ($msg == 'invalid') {
+        ?>
+            <div class="text-center col-md-6 offset-md-3 ">
+                <div class="alert alert-danger" role="alert">
+                    invalid
+                </div>
+            </div>
+        <?php
+        }
+        ?>
 
-        <form action="item_insert_SQL.php" method="POST">
+        <form action="item_insert_SQL.php" method="POST" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="exampleInputEmail1">item_name</label>
-                <input name="item_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted"></small>
+                <input name="item_name" class="form-control" aria-describedby="emailHelp">
+                <small class="form-text text-muted"></small>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">item_price</label>
-                <input name="item_price" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input name="item_price" class="form-control">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">item_type</label>
-                <input name="item_type" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name="item_type" class="form-control" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">item_amount</label>
-                <input name="item_amount" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name="item_amount" class="form-control" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">item_preview</label>
-                <input name="item_preview" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name="item_preview" class="form-control" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">item_disc</label>
-                <input name="item_disc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name="item_disc" class="form-control" aria-describedby="emailHelp">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+
+          
+                Select image to upload:
+                <input type="file" name="fileToUpload" id="fileToUpload">
+
+
+            
+            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
         </form>
     </div>
 

@@ -1,6 +1,5 @@
 <?php
-if (!isset($_SESSION))
-{
+if (!isset($_SESSION)) {
   session_start();
 }
 ?>
@@ -19,30 +18,35 @@ if (!isset($_SESSION))
       <li class="nav-item">
         <a class="nav-link" href="index.php">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">แจ้งชำระ</a>
-      </li>
+
       <?php
       if (isset($_SESSION["user_username"])) {
+      ?>
+        <li class="nav-item">
+          <a class="nav-link" href="#">username : <?php echo $_SESSION["user_fullname"]; ?></a>
+        </li>
+        <?php
+        if ($_SESSION["user_status"] == 1) {
+        ?>
+          <li class="nav-item">
+            <a class="nav-link" href="admin.php">AdminControl</a>
+          </li>
+        <?php
+        }
         ?>
         <li class="nav-item">
-          <a class="nav-link" href="#"><?php echo $_SESSION["user_fullname"]; ?></a>
+          <a class="nav-link" href="payment.php">แจ้งชำระ</a>
         </li>
-        <?php 
-          if( $_SESSION["user_status"] == 1){
-        ?>
-            <li class="nav-item">
-              <a class="nav-link" href="admin.php">AdminControl</a>
-            </li>
-            <?php
-          }
-        ?>
+        <li class="nav-item">
+          <a class="nav-link" href="user_order.php">คำสั่งซื้อของฉัน</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="logout.php">ออกจากระบบ</a>
         </li>
-        <?php
+      <?php
       } else {
-        ?>
+      ?>
+        
         <li class="nav-item">
           <a class="nav-link" href="login.php">เข้าสู่ระบบ</a>
         </li>
@@ -50,7 +54,7 @@ if (!isset($_SESSION))
         <li class="nav-item">
           <a class="nav-link" href="register.php">สมัครสมาชิก</a>
         </li>
-        <?php
+      <?php
       }
       ?>
 

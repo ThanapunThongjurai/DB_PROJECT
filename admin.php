@@ -36,8 +36,6 @@ if ($_SESSION["user_status"] == 0) //0 is normal
   <div class="container">
     <div class="row row-cols-1 row-cols-md-3">
       <?php
-
-
       $stmt = $conn->prepare("SELECT * FROM `item`");
       $stmt->execute();                               // run sql before
       ?>
