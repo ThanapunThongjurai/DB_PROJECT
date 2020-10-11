@@ -1,16 +1,16 @@
 <?php
-if (!isset($_SESSION))
-{
+if (!isset($_SESSION)) {
   session_start();
 }
 require_once('connect.php');
-if($_SESSION["user_status"] == 0) //0 is normal 
-{ 
+if ($_SESSION["user_status"] == 0) //0 is normal 
+{
   header("Location: login.php");
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
@@ -37,28 +37,49 @@ if($_SESSION["user_status"] == 0) //0 is normal
     <div class="row row-cols-1 row-cols-md-3">
       <?php
 
-      
+
       $stmt = $conn->prepare("SELECT * FROM `item`");
       $stmt->execute();                               // run sql before
-      while ($result = $stmt->fetch()) {
-        ?>
-        <div class="col mb-3">
-          <div class="card">
-            <!--img src="images/gallery/<?php echo $result; ?>.jpg"-->
-            <img src="image/<?php echo $result["imagelocation"] ?>" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"><?php $result["item_preview"]; ?></h5>
-              <p class="card-text">Amoung us charlacter item_name <?php echo $result["item_name"] ?></p>
-            </div>
-            <a class="btn btn-primary" href="detail.php?id_item=<?php echo $result['id_item']; ?>" role="button"><h1>ซื้อกูสิ</h1></a>
-          </div>
-          </div><?php
-        }?>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="js/jquery-3.5.1.slim.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-      </body>
+      ?>
+      <div class="">
+        <table class="table">
 
-      </html>
+          <thead>
+            <tr>
+              <th scope="col">item_id</th>
+              <th scope="col">item_name</th>
+              <th scope="col">item_price</th>
+              <th scope="col">item_type</th>
+              <th scope="col">item_amount</th>
+              <th scope="col">imagelocation</th>
+            </tr>
+          </thead>
+          <?php
+          while ($result = $stmt->fetch()) {
+          ?>
+            <tbody>
+              <tr>
+                <th scope="row"><?php echo $result["id_item"]; ?></th>
+                <td><?php echo $result["item_name"]; ?></td>
+                <td><?php echo $result["item_price"]; ?></td>
+                <td><?php echo $result["item_type"]; ?></td>
+                <td><?php echo $result["item_amount"]; ?></td>
+                <td><img src="image/<?php echo $result["imagelocation"] ; ?>" height="40px"></td>
+                <td><button type="button" class="btn btn-primary btn-outline-danger">Small button</button></td>
+              </tr>
+            </tbody>
+          <?php
+          } ?>
+        </table>
+
+
+      </div>
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="js/jquery-3.5.1.slim.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
