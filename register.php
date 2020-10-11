@@ -71,7 +71,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">เบอร์โทร</label>
-                <input name="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                <input name="TEL" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
                 <small id="emailHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-check">
