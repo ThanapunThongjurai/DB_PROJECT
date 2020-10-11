@@ -1,3 +1,6 @@
+<?php
+$msg = (isset($_GET['msg'])) ? $_GET['msg'] : '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,14 +35,14 @@
   </div>
   <div class="container">
     <?php
-    if ($_GET['msg'] == "invalid") {
-    ?>
-    <div class="text-center col-md-6 offset-md-3 ">
-      <div class="alert alert-danger" role="alert">
-      invalid
+    if (isset($msg)) {
+      ?>
+      <div class="text-center col-md-6 offset-md-3 ">
+        <div class="alert alert-danger" role="alert">
+          invalid
+        </div>
       </div>
-    </div>
-    <?php
+      <?php
     }
     ?>
 
