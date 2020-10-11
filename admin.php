@@ -4,12 +4,13 @@ if (!isset($_SESSION))
   session_start();
 }
 require_once('connect.php');
+if($_SESSION["user_status"] == 0) //0 is normal 
+{ 
+  header("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
-
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
@@ -35,6 +36,8 @@ require_once('connect.php');
   <div class="container">
     <div class="row row-cols-1 row-cols-md-3">
       <?php
+
+      
       $stmt = $conn->prepare("SELECT * FROM `item`");
       $stmt->execute();                               // run sql before
       while ($result = $stmt->fetch()) {

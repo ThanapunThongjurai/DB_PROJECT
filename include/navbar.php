@@ -28,6 +28,15 @@ if (!isset($_SESSION))
         <li class="nav-item">
           <a class="nav-link" href="#"><?php echo $_SESSION["user_fullname"]; ?></a>
         </li>
+        <?php 
+          if( $_SESSION["user_status"] == 1){
+        ?>
+            <li class="nav-item">
+              <a class="nav-link" href="admin.php">AdminControl</a>
+            </li>
+            <?php
+          }
+        ?>
         <li class="nav-item">
           <a class="nav-link" href="logout.php">ออกจากระบบ</a>
         </li>
