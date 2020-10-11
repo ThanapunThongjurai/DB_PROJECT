@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (!isset($_SESSION))
+{
+  session_start();
+}
 ?>
 
 <nav class="navbar navbar-light" style="background-color: #FFFFFF;">
@@ -21,16 +24,16 @@ session_start();
       </li>
       <?php
       if (isset($_SESSION["user_username"])) {
-      ?>
+        ?>
         <li class="nav-item">
           <a class="nav-link" href="#"><?php echo $_SESSION["user_fullname"]; ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="logout.php">ออกจากระบบ</a>
         </li>
-      <?php
+        <?php
       } else {
-      ?>
+        ?>
         <li class="nav-item">
           <a class="nav-link" href="login.php">เข้าสู่ระบบ</a>
         </li>
@@ -38,7 +41,7 @@ session_start();
         <li class="nav-item">
           <a class="nav-link" href="register.php">สมัครสมาชิก</a>
         </li>
-      <?php
+        <?php
       }
       ?>
 
