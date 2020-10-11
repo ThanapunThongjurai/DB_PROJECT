@@ -65,7 +65,8 @@ if ($_SESSION["user_status"] == 0) //0 is normal
                 <td><?php echo $result["item_type"]; ?></td>
                 <td><?php echo $result["item_amount"]; ?></td>
                 <td><img src="image/<?php echo $result["imagelocation"] ; ?>" height="40px"></td>
-                <td><button type="button" class="btn btn-primary btn-outline-danger">Small button</button></td>
+                <td><a type="button" class="btn btn-outline-secondary" href="item_update.php?id_item=<?php echo $result["id_item"]; ?>.php">UPDATE</a></td>
+                <td><a type="button" class="btn btn-outline-danger" href="item_delete.php?id_item=<?php echo $result["id_item"]; ?>.php">DELETE</a></td>
               </tr>
             </tbody>
           <?php
