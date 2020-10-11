@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (!isset($_SESSION))
+{
+  session_start();
+}
 require_once('connect.php');
 ?>
 <!DOCTYPE html>
@@ -35,7 +38,7 @@ require_once('connect.php');
       $stmt = $conn->prepare("SELECT * FROM `item`");
       $stmt->execute();                               // run sql before
       while ($result = $stmt->fetch()) {
-      ?>
+        ?>
         <div class="col mb-3">
           <div class="card">
             <!--img src="images/gallery/<?php echo $result; ?>.jpg"-->
@@ -46,13 +49,13 @@ require_once('connect.php');
             </div>
             <a class="btn btn-primary" href="detail.php?id_item=<?php echo $result['id_item']; ?>" role="button"><h1>ซื้อกูสิ</h1></a>
           </div>
-        </div><?php
-      }?>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="js/jquery-3.5.1.slim.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-</body>
+          </div><?php
+        }?>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+      </body>
 
-</html>
+      </html>
