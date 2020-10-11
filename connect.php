@@ -3,7 +3,7 @@ date_default_timezone_set('Asia/Bangkok');
 $servername = "localhost";
 $dbname = "test";
 $username = "root";
-$password = "00110011";
+$password = "001100111";
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
