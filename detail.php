@@ -30,38 +30,33 @@ $stmt->execute();
 <body>
 
 
-    <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
+    <?php include_once (__DIR__) . ('/include/navbar.php'); $id_item = $stmt->fetch()?>
     <div class="container">
         <div class="row">
-            <?php
+            <div class="col-sm-4">
+                <img src="image/<?php echo $id_item["imagelocation"] ?>" class="card-img-top" alt="...">
+                <button type="button" class="btn btn-primary">
+                    <a class="btn btn-primary" href="cart.php?id_item=<?php echo $id_item['id_item']; ?>" role="button">
+                        <h1>หยิบกูลงตะกร้า</h1>
+                    </a>
+                </button>
+            </div>
 
-            while ($id_item = $stmt->fetch()) {
-            ?>
-                <div class="col-sm-4">
-                    <img src="image/<?php echo $id_item["imagelocation"] ?>" class="card-img-top" alt="...">
-                    <button type="button" class="btn btn-primary">
-                        <a class="btn btn-primary" href="cart.php?id_item=<?php echo $id_item['id_item']; ?>" role="button">
-                            <h1>หยิบกูลงตะกร้า</h1>
-                        </a>
-                    </button>
-                </div>
-
-                <div class="col-sm-8">
-                    <p class="">ชื่อสินค้า : <?php echo $id_item["item_name"] ?></p>
-                    <p class="">ราคา : <?php echo $id_item["item_price"] ?></p>
-                    <p class="">คลัง : <?php echo $id_item["item_amount"] ?></p>
-                    <p class="">คำอธิบาย : <?php echo $id_item["item_disc"] ?></p>
-                </div>
+            <div class="col-sm-8">
+                <p class="">ชื่อสินค้า : <?php echo $id_item["item_name"] ?></p>
+                <p class="">ราคา : <?php echo $id_item["item_price"] ?></p>
+                <p class="">คลัง : <?php echo $id_item["item_amount"] ?></p>
+                <p class="">คำอธิบาย : <?php echo $id_item["item_disc"] ?></p>
+            </div>
         </div>
 
+        </div>
     </div>
-    </div><?php
-            } ?>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/jquery-3.5.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
