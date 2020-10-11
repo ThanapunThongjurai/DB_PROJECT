@@ -35,7 +35,7 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
   </div>
   <div class="container">
     <?php
-    if (isset($msg)) {
+    if ($msg == 'invalid') {
       ?>
       <div class="text-center col-md-6 offset-md-3 ">
         <div class="alert alert-danger" role="alert">
