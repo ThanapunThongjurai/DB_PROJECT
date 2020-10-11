@@ -43,7 +43,7 @@ if ($_SESSION["user_status"] == 0) //0 is normal
       ?>
       <div class="">
         <table class="table">
-        <a type="button" class="btn btn-outline-success btn-lg" href="item_delete.php">item_insert</a>
+        <a type="button" class="btn btn-outline-success btn-lg" href="item_insert.php">item_insert</a>
           <thead>
             <tr>
               <th scope="col">item_id</th>
