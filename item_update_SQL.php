@@ -5,6 +5,7 @@ if ($_SESSION["user_status"] == 0) //0 is normal
 {
   header("Location: login.php");
 }
+$item_id = $_GET['id_item'];
 $item_name = $_POST['item_name'];
 $item_price = $_POST['item_price'];
 $item_type = $_POST['item_type'];
@@ -63,28 +64,17 @@ if ($uploadOk == 0) {
     echo "Sorry, there was an error uploading your file.";
   }
 }
+if ($item_name != "") {
 
-
-
-
-
-
-
-
-//$stmt = $conn->prepare("SELECT * FROM user"); // sql command
-$stmt = $conn->prepare("SELECT item_name FROM `item` WHERE item_name = '$item_name'");
-$stmt->execute();                               // run sql before
-
-$result = $stmt->fetch();
-if (($item_name != $result["item_name"]) && $item_name != "") {
-
-    $inster_item = $conn->prepare("INSERT INTO `item` (`id_item`, `item_name`, `item_price`, `item_type`, `item_disc`, `item_preview`, `item_amount`, `imagelocation`) 
-    VALUES (NULL, '$item_name', '$item_price', '$item_type', '$item_disc', '$item_preview', '$item_amount', '$itemlocation');");
+    $inster_item = $conn->prepare("UPDATE `item` SET 
+    `item_name`='$item_name',`item_price`='$item_price',`item_type`='$item_type',
+    `item_disc`='$item_disc',`item_preview`='$item_preview',
+    `item_amount`='$item_amount',`imagelocation`='$imagelocation' WHERE `id_item` = '1';");
     $inster_item->execute();
     header("Location: admin.php");
 } else {
     echo "ผิด";
-    header("Location: item_insert.php?msg=invalid");
+    header("Location: item_update.php?msg=invalid");
 }
 //$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 /*  
