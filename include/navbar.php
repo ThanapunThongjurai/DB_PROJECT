@@ -23,13 +23,19 @@ if (!isset($_SESSION)) {
       if (isset($_SESSION["user_username"])) {
       ?>
         <li class="nav-item">
-          <a class="nav-link" href="#">username : <?php echo $_SESSION["user_fullname"]; ?></a>
+          <a class="nav-link" href="user_data.php">username : <?php echo $_SESSION["user_fullname"]; ?></a>
         </li>
         <?php
         if ($_SESSION["user_status"] == 1) {
         ?>
           <li class="nav-item">
-            <a class="nav-link" href="admin.php">AdminControl</a>
+            <a class="nav-link" href="admin.php">AdminControl เพิ่ม ลบ update </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="check_payment_transection.php">ตรวจสอบแจ้งชำระ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="oreder.php">ORDERของลูกค้า</a>
           </li>
         <?php
         }
@@ -46,7 +52,7 @@ if (!isset($_SESSION)) {
       <?php
       } else {
       ?>
-        
+
         <li class="nav-item">
           <a class="nav-link" href="login.php">เข้าสู่ระบบ</a>
         </li>
