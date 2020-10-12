@@ -9,8 +9,13 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 
 $item_update_id = $_GET["id_item"];
 
-
+$stmt = $conn->prepare("SELECT * FROM `item` WHERE `id_item` = '$item_update_id';");
+$stmt->execute();
+$item_data= $stmt->fetch();
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,28 +79,27 @@ $item_update_id = $_GET["id_item"];
 
             <div class="form-group">
                 <label for="exampleInputEmail1">item_name</label>
-                <input name="item_name" class="form-control" aria-describedby="emailHelp">
-                <small class="form-text text-muted"></small>
+                <input  name="item_name" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_name']; ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">item_price</label>
-                <input name="item_price" class="form-control">
+                <input name="item_price" class="form-control" value="<?php echo $item_data['item_price']; ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">item_type</label>
-                <input name="item_type" class="form-control" aria-describedby="emailHelp">
+                <input name="item_type" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_type']; ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">item_amount</label>
-                <input name="item_amount" class="form-control" aria-describedby="emailHelp">
+                <input name="item_amount" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_amount']; ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">item_preview</label>
-                <input name="item_preview" class="form-control" aria-describedby="emailHelp">
+                <input name="item_preview" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_preview']; ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">item_disc</label>
-                <input name="item_disc" class="form-control" aria-describedby="emailHelp">
+                <input name="item_disc" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_disc']; ?>">
             </div>
 
 

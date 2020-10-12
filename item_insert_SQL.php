@@ -55,26 +55,17 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    $itemlocation = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
-    echo $itemlocation;
+    $itemlocation = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])).'';
     echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-
+    echo $itemlocation;
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
 }
 
-
-
-
-
-
-
-
 //$stmt = $conn->prepare("SELECT * FROM user"); // sql command
 $stmt = $conn->prepare("SELECT item_name FROM `item` WHERE item_name = '$item_name'");
 $stmt->execute();                               // run sql before
-
 $result = $stmt->fetch();
 if (($item_name != $result["item_name"]) && $item_name != "") {
 

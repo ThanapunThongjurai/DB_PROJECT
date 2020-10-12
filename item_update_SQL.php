@@ -64,13 +64,20 @@ if ($uploadOk == 0) {
     echo "Sorry, there was an error uploading your file.";
   }
 }
+
 if ($item_name != "") {
 
     $inster_item = $conn->prepare("UPDATE `item` SET 
     `item_name`='$item_name',`item_price`='$item_price',`item_type`='$item_type',
     `item_disc`='$item_disc',`item_preview`='$item_preview',
-    `item_amount`='$item_amount',`imagelocation`='$imagelocation' WHERE `id_item` = '1';");
+    `item_amount`='$item_amount' WHERE `id_item` = '$item_id';");
     $inster_item->execute();
+    if($uploadOk > 0)
+    {
+        $inster_item_image = $conn->prepare("UPDATE `item` SET `imagelocation`='$itemlocation' WHERE `id_item` = '$item_id';");
+        $inster_item_image->execute();
+        echo "update photo";
+    }
     header("Location: admin.php");
 } else {
     echo "ผิด";
