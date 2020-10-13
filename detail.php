@@ -36,7 +36,8 @@ $stmt->execute();
             <div class="col-sm-4">
                 <img src="image/<?php echo $id_item["imagelocation"] ?>" class="card-img-top" alt="...">
                 <button type="button" class="btn btn-primary">
-                    <a class="btn btn-primary" href="cart.php?id_item=<?php echo $id_item['id_item']; ?>" role="button">
+                
+                    <a class="btn btn-primary" href="cart.php?id_item=<?php echo $id_item['id_item']; ?>&act=add" role="button">
                         <h1>หยิบกูลงตะกร้า</h1>
                     </a>
                 </button>
