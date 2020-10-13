@@ -8,6 +8,7 @@ $email = $_POST['EMAIL'];
 $fullname = $_POST['FULLNAME'];
 $address = $_POST['ADDRESS'];
 $tel = $_POST['TEL'];
+$email = $_POST['EMAIL'];
 
 
 
@@ -19,8 +20,8 @@ $stmt->execute();                               // run sql before
 $result = $stmt->fetch();
 if (($user != $result["user_username"]) && $user != "") {
 
-    $inster_user = $conn->prepare("INSERT INTO `user` (`user_id`, `user_username`, `user_password`, `user_fullname`, `user_address`, `user_tel`, `user_status`) 
-                                VALUES (NULL, '$user', '$pass', '$fullname', '$address', '$tel', '0');");
+    $inster_user = $conn->prepare("INSERT INTO `user` (`user_id`, `user_username`, `user_password`, `user_fullname`, `user_address`, `user_tel`, `user_status`,`user_email`) 
+                                VALUES (NULL, '$user', '$pass', '$fullname', '$address', '$tel', '0','$email');");
     $inster_user->execute();
     //echo "ถูกต้อง";
     $_SESSION["user_username"] = $user;

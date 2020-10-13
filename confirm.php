@@ -68,7 +68,7 @@ include("connect.php");
                 <tr>
                     <td width="22%" bgcolor="#EEEEEE">ที่อยู่</td>
                     <td width="78%">
-                        <textarea name="address" value="<?php echo $user['user_address'] ;  ?> "disabled cols="35" rows="5" id="address" required></textarea>
+                        <textarea name="address"  disabled cols="35" rows="5" id="address" required><?php echo $user['user_address'] ;  ?></textarea>
                     </td>
                 </tr>
                 <tr>
