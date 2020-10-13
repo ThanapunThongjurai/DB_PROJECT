@@ -38,7 +38,7 @@ if (!isset($_SESSION)) {
             <a class="nav-link" href="oreder.php">ORDERของลูกค้า</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cart.php?act=update">ตะกร้า</a>
+            <a class="nav-link" href="cart.php?act=update1">ตะกร้า</a>
           </li>
         <?php
         }

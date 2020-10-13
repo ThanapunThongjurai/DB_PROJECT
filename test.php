@@ -12,9 +12,12 @@ $inster_paymebr->execute();
 
 */
 $user_username = $_SESSION['user_username'];
-$stmt = $conn->prepare("SELECT max(pay_id) as pay_id FROM `payment` WHERE pay_username = '$user_username'");
-$stmt->execute();   
-while ($result = $stmt->fetch()) {
-    $max_pay_id= $result['pay_id'];
+$inster_track = $conn->prepare("INSERT INTO `track` (`track_id`, `track_username`, `track_owner`, `track_no`, `track_status`) 
+    VALUES (NULL, '$user_username', NULL, NULL, 'wait');");
+$inster_track->execute();
+$max_track= $conn->prepare("SELECT max(track_id) as track_id FROM `track` WHERE track_username = '$user_username'");
+$max_track->execute();
+while ($result = $max_track->fetch()) {
+    $max_track_id = $result['track_id'];
 }
-echo $max_pay_id;
+echo $max_track_id;

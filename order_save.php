@@ -20,35 +20,42 @@ include("connect.php");
     $email = $_REQUEST["email"];
     $phone = $_REQUEST["phone"];
     */
-    $total_qty = $_REQUEST["total_qty"];
-    $total = $_REQUEST["total"];
+
+    //$total_qty = $_REQUEST["total_qty"];
+    $total = $_SESSION["total"];
+    //echo $total;
     $dttm = Date("Y-m-d G:i:s");
     $user_username = $_SESSION['user_username'];
 
     //insert payment
     $inster_paymebr = $conn->prepare("INSERT INTO `payment` (`pay_id`, `pay_username`, `pay_status`, `pay_price`, `pay_time`, `payimagelocation`) 
-    VALUES (NULL, '$user_username', 'wait', NULL, NULL, NULL);");
+    VALUES (NULL, '$user_username', 'wait', '$total', NULL, NULL);");
     $inster_paymebr->execute();
-
-
+    //หาMAX ของ payment
     $stmt = $conn->prepare("SELECT max(pay_id) as pay_id FROM `payment` WHERE pay_username = '$user_username'");
     $stmt->execute();   
     while ($result = $stmt->fetch()) {
         $max_pay_id= $result['pay_id'];
     }
-    echo $max_pay_id;
-    //บันทึกการสั่งซื้อลงใน order_detail
+    //echo $max_pay_id;
+
+    //track id 
+    $user_username = $_SESSION['user_username'];
+    $inster_track = $conn->prepare("INSERT INTO `track` (`track_id`, `track_username`, `track_owner`, `track_no`, `track_status`) 
+        VALUES (NULL, '$user_username', NULL, NULL, 'wait');");
+    $inster_track->execute();
+    $max_track= $conn->prepare("SELECT max(track_id) as track_id FROM `track` WHERE track_username = '$user_username'");
+    $max_track->execute();
+    while ($result = $max_track->fetch()) {
+        $max_track_id = $result['track_id'];
+    }
+    //echo $max_track_id;
+    
+
+
+
+
     /*
-    echo $dttm;
-    mysqli_query($conn, "BEGIN");
-    $sql1    = "insert into order_head values(null, '$dttm', '$name', '$address', '$email', '$phone', '$total_qty', '$total')";
-    $query1    = mysqli_query($conn, $sql1);
-        
-    //ฟังก์ชั่น MAX() จะคืนค่าที่มากที่สุดในคอลัมน์ที่ระบุ ออกมา หรือจะพูดง่ายๆก็ว่า ใช้สำหรับหาค่าที่มากที่สุด นั่นเอง.
-    $sql2 = "select max(o_id) as o_id from order_head where o_name='$name' and o_email='$email' and o_dttm='$dttm' ";
-    $query2    = mysqli_query($conn, $sql2);
-    $row = mysqli_fetch_array($query2);
-    $o_id = $row["o_id"];
     
     //PHP foreach() เป็นคำสั่งเพื่อนำข้อมูลออกมาจากตัวแปลที่เป็นประเภท array โดยสามารถเรียกค่าได้ทั้ง $key และ $value ของ array
     foreach ($_SESSION['cart'] as $p_id => $qty) {
@@ -75,7 +82,7 @@ include("connect.php");
     */
     ?>
     <script type="text/javascript">
-        alert("<?php echo $msg; ?>");
+        //alert("<?php echo $msg; ?>");
         //window.location = 'product.php';
     </script>
 

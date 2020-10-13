@@ -4,6 +4,7 @@ session_start();
 $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 $id_item = isset($_REQUEST['id_item']) ? $_REQUEST['id_item'] : '';
 $act = isset($_REQUEST['act']) ? $_REQUEST['act'] : 'update';
+//$amount_array = isset($_REQUEST['amount']) ? $_REQUEST['amount'] : '0';
 //$act = isset($_GET['amount']) ? $_GET['amount'] : '0';
 //$act = $_REQUEST['act'];
 //echo $id_item;
@@ -113,6 +114,7 @@ if ($act == 'update') {
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
 </body>
 <!--
 
@@ -148,6 +150,9 @@ if ($act == 'update') {
                 </tbody>
             </table>
         <?php
+        
+        
+
         }
         ?>
     </form>

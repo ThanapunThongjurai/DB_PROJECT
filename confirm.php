@@ -49,10 +49,10 @@ if (!isset($_SESSION["user_status"]))
                 $stmt = $conn->prepare("SELECT * FROM `item` WHERE id_item = '$id_item'");
                 $stmt->execute();                               // run sql before
                 $row = $stmt->fetch();
-                $sum    = $row['item_price'] * $qty;
                 if ($_SESSION['cart'][$id_item] >= $row['item_amount']) {
                     $qty = $row['item_amount'];
                 }
+                $sum    = $row['item_price'] * $qty;
                 $total    += $sum;
                 echo "<tr>";
                 echo "<td>" . $row["item_name"] . "</td>";
@@ -61,6 +61,7 @@ if (!isset($_SESSION["user_status"]))
                 echo "<td align='right'>" . number_format($sum, 2) . "</td>";
                 echo "</tr>";
             }
+            $_SESSION["total"] = $total;
             echo "<tr>";
             echo "<td  align='right' colspan='3' bgcolor='#F9D5E3'><b>รวม</b></td>";
             echo "<td align='right' bgcolor='#F9D5E3'>" . "<b>" . number_format($total, 2) . "</b>" . "</td>";
