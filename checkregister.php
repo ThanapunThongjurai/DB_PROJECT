@@ -20,12 +20,13 @@ $stmt->execute();                               // run sql before
 $result = $stmt->fetch();
 if (($user != $result["user_username"]) && $user != "") {
 
-    $inster_user = $conn->prepare("INSERT INTO `user` (`user_id`, `user_username`, `user_password`, `user_fullname`, `user_address`, `user_tel`, `user_status`,`user_email`) 
-                                VALUES (NULL, '$user', '$pass', '$fullname', '$address', '$tel', '0','$email');");
+    $inster_user = $conn->prepare("INSERT INTO `user` (`user_username`, `user_password`, `user_fullname`, `user_address`, `user_tel`, `user_status`,`user_email`) 
+                                VALUES ('$user', '$pass', '$fullname', '$address', '$tel', '0','$email');");
     $inster_user->execute();
     //echo "ถูกต้อง";
     $_SESSION["user_username"] = $user;
     $_SESSION["user_fullname"] = $fullname;
+    $_SESSION["user_status"] = $result['0'];
     //ไม่ทำ password เพราะมันไม่ปลอดภัย
     header("Location: index.php");
 } else {
