@@ -49,8 +49,8 @@ include("connect.php");
         //$_SESSION["user_username"] = $result['user_username'];
         //$_SESSION["user_fullname"] = $result['user_fullname'];
         //$_SESSION["user_status"] = $result['user_status'];
-        $user = $_SESSION["user_username"];
-        $stmt = $conn->prepare("SELECT * FROM `user` WHERE user_username    =  '$user' ");
+        $user_id = $_SESSION["user_username"];
+        $stmt = $conn->prepare("SELECT * FROM `user` WHERE user_username    =  '$user_id' ");
         $stmt->execute(); // run sql before
         $user = $stmt->fetch();
         ?>
@@ -68,16 +68,16 @@ include("connect.php");
                 <tr>
                     <td width="22%" bgcolor="#EEEEEE">ที่อยู่</td>
                     <td width="78%">
-                        <textarea name="address" disabled cols="35" rows="5" id="address" required></textarea>
+                        <textarea name="address" value="<?php echo $user['user_address'] ;  ?> "disabled cols="35" rows="5" id="address" required></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td bgcolor="#EEEEEE">อีเมล</td>
-                    <td><input name="email" type="email" disabled id="email" required /></td>
+                    <td><input name="email" type="email" value="<?php echo $user['user_email'] ;  ?>" disabled id="email" required /></td>
                 </tr>
                 <tr>
                     <td bgcolor="#EEEEEE">เบอร์ติดต่อ</td>
-                    <td><input name="phone" type="text" disabled id="phone" required /></td>
+                    <td><input name="phone" type="text" value="<?php echo $user['user_tel'] ;  ?>" disabled id="phone" required /></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center" bgcolor="#CCCCCC">
