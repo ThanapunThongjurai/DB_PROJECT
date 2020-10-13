@@ -1,6 +1,9 @@
 <?php
 session_start();
 include("connect.php");
+if (isset($_SESSION["user_status"])) {
+    header("Location: login.php");
+    
 ?>
 <!DOCTYPE html>
 <html>
