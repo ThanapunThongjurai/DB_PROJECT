@@ -33,11 +33,25 @@ if ($act == 'update') {
 <html>
 
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <title>Hello, world!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Shopping Cart</title>
 </head>
-
+<style tpye="text/css">
+  body {
+    background-image: url('image/wall.jpg');
+    -webkit-background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
 <body>
+    <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
     <form id="frmcart" name="frmcart" method="post" action="?act=update">
         <table width="600" border="0" align="center" class="square">
             <tr>
@@ -60,11 +74,10 @@ if ($act == 'update') {
                     $stmt->execute();                               // run sql before
 
                     $row = $stmt->fetch();
-                
+
                     //echo $row['item_amount'];
-                    
-                    if($_SESSION['cart'][$id_item] >= $row['item_amount'])
-                    {
+
+                    if ($_SESSION['cart'][$id_item] >= $row['item_amount']) {
                         $qty = $row['item_amount'];
                     }
 
@@ -78,7 +91,7 @@ if ($act == 'update') {
                     echo "<input type='text' name='amount[$id_item]' value='$qty' size='2'/></td>";
                     echo "<td width='93' align='right'>" . number_format($sum, 2) . "</td>";
                     //remove product
-                    echo "<td width='46' align='center'><a href='cart.php?id_item=".$id_item."&act=remove'>ลบ</a></td>";
+                    echo "<td width='46' align='center'><a href='cart.php?id_item=" . $id_item . "&act=remove'>ลบ</a></td>";
                     echo "</tr>";
                 }
                 echo "<tr>";
@@ -97,6 +110,9 @@ if ($act == 'update') {
             </tr>
         </table>
     </form>
+    <script src="js/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 <!--
 

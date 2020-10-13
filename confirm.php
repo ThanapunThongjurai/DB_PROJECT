@@ -1,20 +1,35 @@
 <?php
 session_start();
 include("connect.php");
-if (!isset($_SESSION["user_status"])) 
+if (!isset($_SESSION["user_status"]))
     header("Location: login.php");
-    
+
 ?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <title>Hello, world!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Checkout</title>
 </head>
-
+<style tpye="text/css">
+  body {
+    background-image: url('image/wall.jpg');
+    -webkit-background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
 <body>
-    <form id="frmcart" name="frmcart" method="post" action="saveorder.php">
+    <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
+    <form id="frmcart" name="frmcart" method="post" action="order_save.php">
         <table width="600" border="0" align="center" class="square">
             <tr>
                 <td width="1558" colspan="4" bgcolor="#FFDDBB">
@@ -27,12 +42,17 @@ if (!isset($_SESSION["user_status"]))
                 <td align="center" bgcolor="#F9D5E3">รวม/รายการ</td>
             </tr>
             <?php
+            
             $total = 0;
+            
             foreach ($_SESSION['cart'] as $id_item => $qty) {
                 $stmt = $conn->prepare("SELECT * FROM `item` WHERE id_item = '$id_item'");
                 $stmt->execute();                               // run sql before
                 $row = $stmt->fetch();
                 $sum    = $row['item_price'] * $qty;
+                if ($_SESSION['cart'][$id_item] >= $row['item_amount']) {
+                    $qty = $row['item_amount'];
+                }
                 $total    += $sum;
                 echo "<tr>";
                 echo "<td>" . $row["item_name"] . "</td>";
@@ -66,21 +86,21 @@ if (!isset($_SESSION["user_status"]))
                 </tr>
                 <tr>
                     <td bgcolor="#EEEEEE">ชื่อ</td>
-                    <td><input name="name"  value="<?php echo $user['user_fullname'] ;  ?>" disabled id="name" required /></td>
+                    <td><input name="name" value="<?php echo $user['user_fullname'];  ?>" disabled id="name" required /></td>
                 </tr>
                 <tr>
                     <td width="22%" bgcolor="#EEEEEE">ที่อยู่</td>
                     <td width="78%">
-                        <textarea name="address"  disabled cols="35" rows="5" id="address" required><?php echo $user['user_address'] ;  ?></textarea>
+                        <textarea name="address" disabled cols="35" rows="5" id="address" required><?php echo $user['user_address'];  ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td bgcolor="#EEEEEE">อีเมล</td>
-                    <td><input name="email" type="email" value="<?php echo $user['user_email'] ;  ?>" disabled id="email" required /></td>
+                    <td><input name="email" type="email" value="<?php echo $user['user_email'];  ?>" disabled id="email" required /></td>
                 </tr>
                 <tr>
                     <td bgcolor="#EEEEEE">เบอร์ติดต่อ</td>
-                    <td><input name="phone" type="text" value="<?php echo $user['user_tel'] ;  ?>" disabled id="phone" required /></td>
+                    <td><input name="phone" type="text" value="<?php echo $user['user_tel'];  ?>" disabled id="phone" required /></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center" bgcolor="#CCCCCC">
@@ -90,6 +110,9 @@ if (!isset($_SESSION["user_status"]))
             </table>
 
     </form>
+    <script src="js/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -11,9 +11,11 @@ if (!empty($_SESSION['cart'])) {
         
         if ($_SESSION['cart'][$id_item] > $row['item_amount']) {
             $qty = $row['item_amount'];
-
+            
             //$act = isset($_POST['amount']) ? $_POST['amount'] : '0';
 
+
+            
             header("Location: cart.php?act=update");
         }
         else
