@@ -44,28 +44,40 @@ include("connect.php");
             echo "</tr>";
             ?>
         </table>
+
+        <?php
+        //$_SESSION["user_username"] = $result['user_username'];
+        //$_SESSION["user_fullname"] = $result['user_fullname'];
+        //$_SESSION["user_status"] = $result['user_status'];
+        $user = $_SESSION["user_username"];
+        $stmt = $conn->prepare("SELECT * FROM `user` WHERE user_username    =  '$user' ");
+        $stmt->execute(); // run sql before
+        $user = $stmt->fetch();
+        ?>
+
         <p>
+
             <table border="0" cellspacing="0" align="center">
                 <tr>
                     <td colspan="2" bgcolor="#CCCCCC">รายละเอียดในการติดต่อ</td>
                 </tr>
                 <tr>
                     <td bgcolor="#EEEEEE">ชื่อ</td>
-                    <td><input name="name" type="text" id="name" required /></td>
+                    <td><input name="name"  value="<?php echo $user['user_fullname'] ;  ?>" disabled id="name" required /></td>
                 </tr>
                 <tr>
                     <td width="22%" bgcolor="#EEEEEE">ที่อยู่</td>
                     <td width="78%">
-                        <textarea name="address" cols="35" rows="5" id="address" required></textarea>
+                        <textarea name="address" disabled cols="35" rows="5" id="address" required></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td bgcolor="#EEEEEE">อีเมล</td>
-                    <td><input name="email" type="email" id="email" required /></td>
+                    <td><input name="email" type="email" disabled id="email" required /></td>
                 </tr>
                 <tr>
                     <td bgcolor="#EEEEEE">เบอร์ติดต่อ</td>
-                    <td><input name="phone" type="text" id="phone" required /></td>
+                    <td><input name="phone" type="text" disabled id="phone" required /></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center" bgcolor="#CCCCCC">
@@ -73,6 +85,7 @@ include("connect.php");
                     </td>
                 </tr>
             </table>
+
     </form>
 </body>
 
