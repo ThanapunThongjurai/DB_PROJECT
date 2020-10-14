@@ -10,7 +10,7 @@ $inster_paymebr = $conn->prepare("INSERT INTO `payment` (`pay_id`, `pay_username
     VALUES (NULL, '$user_username', 'wait', NULL, '$dttm', NULL);");
 $inster_paymebr->execute();
 
-*/
+
 $user_username = $_SESSION['user_username'];
 $inster_track = $conn->prepare("INSERT INTO `track` (`track_id`, `track_username`, `track_owner`, `track_no`, `track_status`) 
     VALUES (NULL, '$user_username', NULL, NULL, 'wait');");
@@ -21,3 +21,4 @@ while ($result = $max_track->fetch()) {
     $max_track_id = $result['track_id'];
 }
 echo $max_track_id;
+*/

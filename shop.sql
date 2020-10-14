@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2020 at 10:42 PM
+-- Generation Time: Oct 14, 2020 at 07:27 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `item` (
-  `id_item` int(4) NOT NULL COMMENT 'รหัสสินค้า',
+  `id_item` int(10) NOT NULL COMMENT 'รหัสสินค้า',
   `item_name` text NOT NULL,
   `item_price` int(10) NOT NULL COMMENT 'ราคา',
   `item_type` int(2) NOT NULL COMMENT 'ประเภท',
   `item_disc` text NOT NULL COMMENT 'คำอธิบาย',
   `item_preview` mediumtext NOT NULL COMMENT 'คำอธิบายแบบย่อ',
-  `item_amount` int(4) NOT NULL COMMENT 'จำนวน',
+  `item_amount` int(10) NOT NULL COMMENT 'จำนวน',
   `imagelocation` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
@@ -67,13 +67,32 @@ CREATE TABLE `item_type` (
 --
 
 CREATE TABLE `orders` (
-  `order_id` int(4) NOT NULL,
-  `order_no` int(4) NOT NULL,
-  `order_username` int(4) NOT NULL,
-  `pay_id` int(4) NOT NULL,
-  `track_id` int(4) NOT NULL,
-  `order_date` date NOT NULL
+  `order_id` int(10) NOT NULL COMMENT 'เลขorder',
+  `order_username` int(10) NOT NULL COMMENT 'username คนซื้อ',
+  `pay_id` int(10) NOT NULL COMMENT 'เลขรหัสการจ่ายเงิน',
+  `track_id` int(10) NOT NULL COMMENT 'เลขติดตามพัสดุ',
+  `order_date` datetime NOT NULL COMMENT 'วันที่ทำการสั่งซื้อ'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `order_username`, `pay_id`, `track_id`, `order_date`) VALUES
+(6, 0, 21, 9, '2020-10-06 12:25:37'),
+(5, 0, 21, 9, '2020-10-06 12:25:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders_no`
+--
+
+CREATE TABLE `orders_no` (
+  `orders_no_id` int(10) NOT NULL COMMENT 'รหัสของ order',
+  `order_item_id` int(10) DEFAULT NULL COMMENT 'รหัสสินค้าที่เก็บไว้',
+  `order_item_amount` int(10) DEFAULT NULL COMMENT 'จำนวนของที่สั่ง'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -87,14 +106,14 @@ CREATE TABLE `payment` (
   `pay_status` enum('wait','pay','cancel') NOT NULL,
   `pay_price` int(10) DEFAULT NULL,
   `pay_time` datetime(6) DEFAULT NULL,
-  `payimagelocation` text DEFAULT NULL
+  `pay_imagelocation` text DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`pay_id`, `pay_username`, `pay_status`, `pay_price`, `pay_time`, `payimagelocation`) VALUES
+INSERT INTO `payment` (`pay_id`, `pay_username`, `pay_status`, `pay_price`, `pay_time`, `pay_imagelocation`) VALUES
 (21, 0, 'wait', 4, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -218,7 +237,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id_item` int(4) NOT NULL AUTO_INCREMENT COMMENT 'รหัสสินค้า', AUTO_INCREMENT=36;
+  MODIFY `id_item` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัสสินค้า', AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `item_type`
@@ -230,7 +249,7 @@ ALTER TABLE `item_type`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'เลขorder', AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `payment`
