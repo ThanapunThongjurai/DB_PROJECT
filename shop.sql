@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2020 at 07:27 AM
+-- Generation Time: Oct 14, 2020 at 09:31 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -79,8 +79,11 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `order_username`, `pay_id`, `track_id`, `order_date`) VALUES
-(6, 0, 21, 9, '2020-10-06 12:25:37'),
-(5, 0, 21, 9, '2020-10-06 12:25:37');
+(14, 0, 27, 15, '2020-10-14 14:08:39'),
+(13, 0, 26, 14, '2020-10-14 14:08:08'),
+(16, 0, 29, 17, '2020-10-14 14:12:19'),
+(17, 123, 30, 18, '2020-10-14 14:29:10'),
+(15, 0, 28, 16, '2020-10-14 14:11:27');
 
 -- --------------------------------------------------------
 
@@ -89,9 +92,10 @@ INSERT INTO `orders` (`order_id`, `order_username`, `pay_id`, `track_id`, `order
 --
 
 CREATE TABLE `orders_no` (
-  `orders_no_id` int(10) NOT NULL COMMENT 'รหัสของ order',
-  `order_item_id` int(10) DEFAULT NULL COMMENT 'รหัสสินค้าที่เก็บไว้',
-  `order_item_amount` int(10) DEFAULT NULL COMMENT 'จำนวนของที่สั่ง'
+  `orders_no` int(10) NOT NULL COMMENT 'runไว้เป็น pimary เฉยๆ',
+  `order_no_id` int(10) NOT NULL COMMENT 'เอาไว้เก็บ order ที่สั่ง',
+  `order_no_item` int(10) NOT NULL COMMENT 'item ที่สั่ง',
+  `order_no_amount` int(10) NOT NULL COMMENT 'จำนวนที่สั่ง'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -114,7 +118,11 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`pay_id`, `pay_username`, `pay_status`, `pay_price`, `pay_time`, `pay_imagelocation`) VALUES
-(21, 0, 'wait', 4, NULL, NULL);
+(27, 0, 'wait', 23, NULL, NULL),
+(26, 0, 'wait', 23, NULL, NULL),
+(28, 0, 'wait', 23, NULL, NULL),
+(29, 0, 'wait', 23, NULL, NULL),
+(30, 123, 'wait', 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -135,7 +143,11 @@ CREATE TABLE `track` (
 --
 
 INSERT INTO `track` (`track_id`, `track_username`, `track_owner`, `track_no`, `track_status`) VALUES
-(9, 0, NULL, NULL, 'wait');
+(18, 123, NULL, NULL, 'wait'),
+(17, 0, NULL, NULL, 'wait'),
+(16, 0, NULL, NULL, 'wait'),
+(15, 0, NULL, NULL, 'wait'),
+(14, 0, NULL, NULL, 'wait');
 
 -- --------------------------------------------------------
 
@@ -178,7 +190,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_username`, `user_password`, `user_fullname`, `user_address`, `user_email`, `user_tel`, `user_status`) VALUES
-('root', 'root', 'Thanaput Thongjurai', 'บ้านไกล', '@pornhun', '0942860030', '1'),
+('root', 'root', 'Thanaput Thongjurai', 'บ้านไกล', '@pornhub', '0942860030', '1'),
 ('root2', 'root2', 'root2', '0', '', '0', '0'),
 ('root3', 'root3', 'root3', '0', '', '0', '0'),
 ('123', '123', '123', '123', '123@gmail.com', '123', '0');
@@ -204,6 +216,12 @@ ALTER TABLE `item_type`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`);
+
+--
+-- Indexes for table `orders_no`
+--
+ALTER TABLE `orders_no`
+  ADD PRIMARY KEY (`orders_no`);
 
 --
 -- Indexes for table `payment`
@@ -249,19 +267,19 @@ ALTER TABLE `item_type`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'เลขorder', AUTO_INCREMENT=7;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'เลขorder', AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `pay_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `pay_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `track`
 --
 ALTER TABLE `track`
-  MODIFY `track_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `track_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `track_owner_id`
