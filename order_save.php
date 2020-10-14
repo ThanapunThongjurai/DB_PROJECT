@@ -65,21 +65,26 @@ include("connect.php");
     //echo $user_username;
     ///echo $max_order_id;
     //*prepare for order_no
-        
+
 
     //echo $max_order_id;
     foreach ($_SESSION['cart'] as $id_item => $qty) {
-        $item_to_order = $conn->prepare("SELECT * FROM `item` WHERE id_item = '$id_item'");
-        $item_to_order->execute();
-        $row = $item_to_order->fetch();
+        $item_to_order_calling = $conn->prepare("SELECT * FROM `item` WHERE id_item = '$id_item'");
+        $item_to_order_calling->execute();
+        $row = $item_to_order_calling->fetch();
 
-        
+
         echo "ชื่อitem_name :: " . $row["item_name"];
         echo "ชื่อitem_price :: " .  $row['item_price'];
         echo "ชื่อ  qty :: " . $qty; //จำนวนของที่ต้องการ
         echo "<br />";
 
+        $item_id = $row["item_name"];
 
+        $item_to_order_no = $conn->prepare("INSERT INTO `orders_no` (`orders_no`, `order_no_id`, `order_no_item`, `order_no_amount`) 
+        VALUES (NULL, '$max_order_id', '$item_id', '$qty');");
+
+        $item_to_order_no->execute();
 
 
 
@@ -93,7 +98,11 @@ include("connect.php");
         $query4    = mysqli_query($conn, $sql4);
         */
     }
-
+    foreach ($_SESSION['cart'] as $id_item) {
+        unset($_SESSION['cart'][$id_item]);
+        unset($_SESSION['cart']);
+    }
+    unset($_SESSION['total']);
 
     /*
     
