@@ -13,7 +13,7 @@ $item_preview = $_POST['item_preview'];
 $item_amount = $_POST['item_amount'];
 
 
-$target_dir = "image/";
+$target_dir = "image/item/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -37,7 +37,7 @@ if (file_exists($target_file)) {
 }
 
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
+if ($_FILES["fileToUpload"]["size"] > 50000000) {
   echo "Sorry, your file is too large.";
   $uploadOk = 0;
 }
@@ -62,7 +62,7 @@ if ($uploadOk == 0) {
     echo "Sorry, there was an error uploading your file.";
   }
 }
-
+echo $itemlocation;
 //$stmt = $conn->prepare("SELECT * FROM user"); // sql command
 $stmt = $conn->prepare("SELECT item_name FROM `item` WHERE item_name = '$item_name'");
 $stmt->execute();                               // run sql before

@@ -101,6 +101,7 @@ include("connect.php");
     foreach ($_SESSION['cart'] as $id_item) {
         unset($_SESSION['cart'][$id_item]);
         unset($_SESSION['cart']);
+        header("Location:order_user.php");
     }
     unset($_SESSION['total']);
 

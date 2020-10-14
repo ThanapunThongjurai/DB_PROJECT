@@ -14,7 +14,7 @@ $item_preview = $_POST['item_preview'];
 $item_amount = $_POST['item_amount'];
 
 
-$target_dir = "image/";
+$target_dir = "image/item/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));

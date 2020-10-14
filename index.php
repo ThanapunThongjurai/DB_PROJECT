@@ -42,7 +42,7 @@ require_once('connect.php');
         <div class="col mb-3">
           <div class="card">
             <!--img src="images/gallery/<?php echo $result; ?>.jpg"-->
-            <img src="image/<?php echo $result["imagelocation"] ?>" class="card-img-top" alt="...">
+            <img src="image/item/<?php echo $result["imagelocation"] ?>" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><?php $result["item_preview"]; ?></h5>
               <p class="card-text">Amoung us charlacter item_name <?php echo $result["item_name"] ?></p>

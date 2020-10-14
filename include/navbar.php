@@ -47,7 +47,7 @@ if (!isset($_SESSION)) {
           <a class="nav-link" href="payment.php">แจ้งชำระ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="user_order.php">คำสั่งซื้อของฉัน</a>
+          <a class="nav-link" href="order_user.php">คำสั่งซื้อของฉัน</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="logout.php">ออกจากระบบ</a>
