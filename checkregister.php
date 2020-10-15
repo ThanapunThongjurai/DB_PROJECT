@@ -26,7 +26,7 @@ if (($user != $result["user_username"]) && $user != "") {
     //echo "ถูกต้อง";
     $_SESSION["user_username"] = $user;
     $_SESSION["user_fullname"] = $fullname;
-    $_SESSION["user_status"] = $result['0'];
+    $_SESSION["user_status"] = $result['user_status'];
     //ไม่ทำ password เพราะมันไม่ปลอดภัย
     header("Location: index.php");
 } else {

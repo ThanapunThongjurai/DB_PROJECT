@@ -53,6 +53,7 @@ include("connect.php");
     //echo $max_track_id;
 
     //*insert order
+    echo $user_username;
     $inster_orders = $conn->prepare("INSERT INTO `orders` (`order_id`, `order_username`, `pay_id`, `track_id`, `order_date`) 
     VALUES (NULL, '$user_username', '$max_pay_id', '$max_track_id', '$dttm');");
     $inster_orders->execute();
