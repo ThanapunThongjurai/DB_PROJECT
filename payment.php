@@ -30,10 +30,8 @@ require_once('connect.php');
   <body>
     <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
     <div class="container">
-        <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h2>test</h2>
-        </div>
         </div>
     </div>
 
