@@ -54,9 +54,9 @@ if (!isset($_SESSION)) {
 
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   <span class="navbar-toggler-icon"></span>
-  </button>
+  </button> -->
 
   <div class="collapse navbar-collapse" id="navbarNav">
 
