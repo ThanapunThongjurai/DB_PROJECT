@@ -83,6 +83,7 @@ require_once('connect.php');
                     <h4>order</h4>
                     <p>วันที่ทำการสั่งซื้อ </p>
                     <p><?php echo $result["order_date"] ?></p>
+                    <a href="order_cancel.php?order_id=<?php echo $result["order_id"] ?>" type="button" class="btn btn-outline-danger">แจ้งยกเลิก</a>
                   </div>
                   <!-- <div class="col">
                     <h4>item</h4>
@@ -91,6 +92,7 @@ require_once('connect.php');
                     <h4>pay</h4>
                     <p>ราคาสุทธิ :<?php echo $result["pay_price"] ?> บาท</p>
                     <p>สถานะการจ่ายเงิน : <?php echo $result["pay_status"] ?></p>
+                    <a href="payment_detail.php?pay_id=<?php echo $result["pay_id"] ?>" type="button" class="btn btn-outline-info">แจ้งชำระเงิน</a>
                   </div>
                   <div class="col">
                     <h4>track</h4>

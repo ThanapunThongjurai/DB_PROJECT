@@ -76,13 +76,16 @@ if (!isset($_SESSION)) {
         if ($_SESSION["user_status"] == 1) {
         ?>
           <li class="nav-item">
-            <a class="nav-link" href="admin.php">AdminControl เพิ่ม ลบ update </a>
+            <a class="nav-link" href="admin.php">Admin : add remove update </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="check_payment_transection.php">ตรวจสอบแจ้งชำระ</a>
+            <a class="nav-link" href="check_payment_transection.php">Admin : ตรวจสอบแจ้งชำระ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="oreder.php">ordersของลูกค้า</a>
+            <a class="nav-link" href="oreder.php">Admin : ordersของลูกค้า</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="oreder.php">Admin : แปะเลขTRACKING ให้order ที่จ่ายเงินแล้ว</a>
           </li>
         <?php
         }
