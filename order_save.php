@@ -69,6 +69,9 @@ include("connect.php");
 
     //echo $max_order_id;
     foreach ($_SESSION['cart'] as $id_item => $qty) {
+
+
+
         $item_to_order_calling = $conn->prepare("SELECT * FROM `item` WHERE id_item = '$id_item'");
         $item_to_order_calling->execute();
         $row = $item_to_order_calling->fetch();
@@ -84,7 +87,15 @@ include("connect.php");
         $item_to_order_no = $conn->prepare("INSERT INTO `orders_no` (`orders_no`, `order_no_id`, `order_no_item`, `order_no_amount`) 
         VALUES (NULL, '$max_order_id', '$item_id', '$qty');");
 
+        //*update amount
+
+
         $item_to_order_no->execute();
+        $cap = $row['item_amount'] - $qty;
+        echo $cap;
+        
+        $inster_item_image = $conn->prepare("UPDATE `item` SET `item_amount`='$cap' WHERE `id_item` = '$id_item';");
+        $inster_item_image->execute();
 
 
 
