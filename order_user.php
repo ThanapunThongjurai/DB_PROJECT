@@ -52,9 +52,11 @@ require_once('connect.php');
   ?>
 
 
-  <div class="container">
+  <div class="container mt-3">
+  <h1>คำสั่งซื้อของท่าน</h1>
     <!--กรอบแดงๆ-->
     <div class="col-12">
+    <h1>คำสั่งซื้อของท่าน</h1>
       <!--กรอบเขียวๆ บนๆอะกรอบเขีวๆ-->
       <?php
       while ($result = $query->fetch()) {
@@ -69,6 +71,7 @@ require_once('connect.php');
             <h2>รายการที่ <a href="#">#<?php echo $result["order_id"] ?> </a></h2>
           
           <div class="">
+            
             <!-- กรอบม่วงๆ -->
             <div class="">
               <!-- กรอบน้ำเงินๆ -->
@@ -78,7 +81,8 @@ require_once('connect.php');
                 <div class="row">
                   <div class="col">
                     <h4>order</h4>
-                    <p>วันที่ทำการสั่งซื้อ :<?php echo $result["order_date"] ?></p>
+                    <p>วันที่ทำการสั่งซื้อ </p>
+                    <p><?php echo $result["order_date"] ?></p>
                   </div>
                   <!-- <div class="col">
                     <h4>item</h4>

@@ -32,8 +32,8 @@ require_once('connect.php');
 
   <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
   
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-3">
+  <div class="container md-3 mt-5">
+    <div class="row row-cols-1 row-cols-md-3 mt-5">
       <?php
       $stmt = $conn->prepare("SELECT * FROM `item`");
       $stmt->execute();                               // run sql before
@@ -47,7 +47,7 @@ require_once('connect.php');
               <h5 class="card-title"><?php $result["item_preview"]; ?></h5>
               <p class="card-text">Amoung us charlacter item_name <?php echo $result["item_name"] ?></p>
             </div>
-            <a class="btn btn-primary" href="detail.php?id_item=<?php echo $result['id_item']; ?>" role="button">
+            <a class="btn btn-primary" href="item_detail.php?id_item=<?php echo $result['id_item']; ?>" role="button">
               <h1>ซื้อกูสิ</h1>
             </a>
           </div>

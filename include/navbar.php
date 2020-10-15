@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
 }
 ?>
 
-<nav class="navbar navbar-light" style="background-color: #FFFFFF;">
+<nav class="navbar navbar-light navbar fixed-top sticky-top" style="background-color: #FFFFFF;">
   <a class="navbar-brand" href="index.php">
     <img src="image/apron.png" width="30" height="30" alt="" />
   </a>
@@ -47,7 +47,7 @@ if (!isset($_SESSION)) {
 
 
 
-  <a class="navbar-brand" href="index.php">ปิดกิจการพานิจ</a>
+  <a class="navbar-brand" href="index.php">เซฟ และ ปอ ร้านขายเสื้อผ้า online</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -70,7 +70,7 @@ if (!isset($_SESSION)) {
       if (isset($_SESSION["user_username"])) {
       ?>
         <li class="nav-item">
-          <a class="nav-link" href="user_data.php">username : <?php echo $_SESSION["user_fullname"]; ?></a>
+          <a class="nav-link" href="user_data.php">username : <?php echo $_SESSION["user_fullname"]; ?> แก้ไขเปลี่ยนแปลงข้อมูลผู้ใช้</a>
         </li>
         <?php
         if ($_SESSION["user_status"] == 1) {
