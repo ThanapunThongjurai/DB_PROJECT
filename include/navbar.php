@@ -82,7 +82,7 @@ if (!isset($_SESSION)) {
             <a class="nav-link" href="check_payment_transection.php">ตรวจสอบแจ้งชำระ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="oreder.php">ORDERของลูกค้า</a>
+            <a class="nav-link" href="oreder.php">ordersของลูกค้า</a>
           </li>
         <?php
         }
