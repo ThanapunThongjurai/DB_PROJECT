@@ -3,15 +3,16 @@ session_start();
 require_once('connect.php');
 if ($_SESSION["user_status"] == 0) //0 is normal 
 {
-  header("Location: login.php");
+    header("Location: login.php");
 }
 $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 
-$item_update_id = $_GET["id_item"];
+$user_username = $_SESSION["user_username"];
+ 
 
-$stmt = $conn->prepare("SELECT * FROM `item` WHERE `id_item` = '$item_update_id';");
+$stmt = $conn->prepare("SELECT `user_username`, `user_fullname`, `user_address`, `user_email`, `user_tel`, `user_status` FROM `user` WHERE `user_username` = '$user_username';");
 $stmt->execute();
-$item_data= $stmt->fetch();
+$user = $stmt->fetch();
 ?>
 
 
@@ -50,20 +51,19 @@ $item_data= $stmt->fetch();
     </div>
     <div class="container">
 
-<!--
+        <!--
       <?php
-      if($item_update_id != 0)
-      {?>
+        if ($item_update_id != 0) { ?>
         <div class="text-center col-md-6 offset-md-3 ">
             <div class="alert alert-danger" role="alert">
               //<?php echo $item_update_id ?>
             </div>
         </div>
           <?php
-      }
-      ?>
+        }
+            ?>
 -->
-<?php
+        <?php
         if ($msg == 'invalid') {
         ?>
             <div class="text-center col-md-6 offset-md-3 ">
@@ -74,41 +74,41 @@ $item_data= $stmt->fetch();
         <?php
         }
         ?>
+             
+        <form action="user_update_SQL.php" method="POST" enctype="multipart/form-data">
 
-        <form action="user_update_SQL.php?id_item=<?php echo $_SESSION["user_username"]; ?>" method="POST" enctype="multipart/form-data">
-
             <div class="form-group">
-                <label for="exampleInputEmail1">item_name</label>
-                <input  name="item_name" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_name']; ?>">
+                <label for="exampleInputEmail1">user_username</label>
+                <input disabled name="user_username" class="form-control" aria-describedby="emailHelp" value="<?php echo $user['user_username']; ?>">
+            <!-- </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">user_Password</label>
+                <input name="user_password" type="password" value="<?php echo $user['user_password']; ?>" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div> -->
+            <div class="form-group">
+                <label for="exampleInputPassword1">user_fullname</label>
+                <input name="user_fullname" class="form-control" value="<?php echo $user['user_fullname']; ?>">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">item_price</label>
-                <input name="item_price" class="form-control" value="<?php echo $item_data['item_price']; ?>">
+                <label for="exampleInputEmail1">user_address</label>
+                <input name="user_address" class="form-control" aria-describedby="emailHelp" value="<?php echo $user['user_address']; ?>">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">item_type</label>
-                <input name="item_type" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_type']; ?>">
+                <label for="exampleInputEmail1">user_email</label>
+                <input name="user_email" class="form-control" aria-describedby="emailHelp" value="<?php echo $user['user_email']; ?>">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">item_amount</label>
-                <input name="item_amount" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_amount']; ?>">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">item_preview</label>
-                <input name="item_preview" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_preview']; ?>">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">item_disc</label>
-                <input name="item_disc" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_disc']; ?>">
+                <label for="exampleInputEmail1">user_tel</label>
+                <input name="user_tel" class="form-control" aria-describedby="emailHelp" value="<?php echo $user['user_tel']; ?>">
             </div>
 
 
-          
-                Select image to upload:
-                <input type="file" name="fileToUpload" id="fileToUpload">
 
-            
-            
+            <!-- Select image to upload:
+                <input type="file" name="fileToUpload" id="fileToUpload"> -->
+
+
+
             <button type="submit" class="btn btn-primary" name="submit">Submit</button>
         </form>
     </div>

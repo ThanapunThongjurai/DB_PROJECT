@@ -102,7 +102,7 @@ $item_data= $stmt->fetch();
                 <input name="item_disc" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_disc']; ?>">
             </div>
 
-
+            <!-- เพิ่มีูป -->
           
                 Select image to upload:
                 <input type="file" name="fileToUpload" id="fileToUpload">
