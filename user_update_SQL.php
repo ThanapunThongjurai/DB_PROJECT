@@ -15,7 +15,4 @@ user_email='$user_email',
 user_tel='$user_tel'
 WHERE user_username = '$user_username';");
 $inster_user->execute();
-
-
-
 header("Location: user_data.php");

@@ -31,7 +31,7 @@ $stmt->execute();
 
 
     <?php include_once (__DIR__) . ('/include/navbar.php'); $id_item = $stmt->fetch()?>
-    <div class="container">
+    <div class="container card mt-5">
         <div class="row">
             <div class="col-sm-4">
                 <img src="image/item/<?php echo $id_item["imagelocation"] ?>" class="card-img-top" alt="...">
@@ -43,7 +43,7 @@ $stmt->execute();
                 </button>
             </div>
 
-            <div class="col-sm-8">
+            <div class="col-sm-8 mt-5">
                 <p class="">ชื่อสินค้า : <?php echo $id_item["item_name"] ?></p>
                 <p class="">ราคา : <?php echo $id_item["item_price"] ?></p>
                 <p class="">คลัง : <?php echo $id_item["item_amount"] ?></p>

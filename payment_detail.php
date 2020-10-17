@@ -3,20 +3,18 @@ if (!isset($_SESSION)) {
     session_start();
 }
 require_once('connect.php');
+$pay_id = $_REQUEST['pay_id'];
+$order_id = $_REQUEST['order_id'];
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
-
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-
     <title>Hello, world!</title>
 </head>
 <style tpye="text/css">
@@ -28,12 +26,63 @@ require_once('connect.php');
 </style>
 
 <body>
-    <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
-    <div class="container">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>test</h2>
+    <?php include_once (__DIR__) . ('/include/navbar.php');
+
+    ?>
+
+    <div class="container mt-3">
+        <h1>แจ้งชำระเงิน </h1>
+        <h2>หมายเลขธุระกรรม <?php echo $pay_id; ?> ของ <a href="order_detail.php?order_id=<?php echo $order_id; ?>">ORDER #<?php echo $order_id; ?></a></h2>
+        <div class="col-12">
+            <div class=" card table-responsive">
+                <h3>สิ่งของใน order</h3>
+                <table class="table dark">
+                    <thead class="thead-dark ">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">ชื่อสินค้า</th>
+                            <th scope="col">จำนวน</th>
+                            <th scope="col">รวม</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <?php
+                            $count = 1;
+                            $total = 0;
+                            $call_order_item = $conn->prepare("SELECT * FROM orders_no where order_no_id ='$order_id' ");
+                            $call_order_item->execute();
+                            while ($result = $call_order_item->fetch()) { ?> 
+                                <?php
+                                    $item_id = $result["order_no_item"];
+                                    $call_item = $conn->prepare("SELECT * FROM item where id_item ='$item_id' ");
+                                    $call_item->execute();
+                                    $result_item =$call_item->fetch();
+                                ?>
+
+                                <th scope="row"><?php echo $count; ?></th>
+                                <td><a href="item_detail.php?id_item=<?php echo $result_item['id_item']; ?>"><img  src="image/item/<?php echo $result_item["imagelocation"] ?>" alt="..." class="   " height="50px"> <?php  echo $result_item["item_name"]; ?></a></td>
+                                <td><?php echo $result["order_no_amount"];?> ชิ้น</td>
+                                <td><?php echo $result["order_no_amount"]*$result_item["item_price"];?> บาท</td>
+                                <?php  $total=$total+$result["order_no_amount"]*$result_item["item_price"];?>
+                            <?php
+                                $count++;
+                            }
+                            ?>
+                                    <!-- //*! datepicker */ -->
+
+                        </tr>
+                    </tbody>
+                    
+                </table>
+
+
+                <h3 style="text-align:right">ราคารวม <?php echo $total ?> บาท.</h3>
+                
+            </div>
         </div>
     </div>
+
 
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>

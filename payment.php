@@ -27,16 +27,17 @@ require_once('connect.php');
   }
 </style>
 
-  <body>
-    <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
-    <div class="container">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>test</h2>
-        </div>
+<body>
+  <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
+  <div class="container">
+    <div class="col-md-6 col-md-offset-3">
+      <h2>test</h2>
     </div>
+  </div>
 
-    <script src="js/jquery-3.5.1.slim.min.js"></script>
+  <script src="js/jquery-3.5.1.slim.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  </body>
+</body>
+
 </html>
