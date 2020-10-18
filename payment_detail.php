@@ -4,10 +4,11 @@ if (!isset($_SESSION)) {
 }
 require_once('connect.php');
 $pay_id = $_REQUEST['pay_id'];
-
-
-
-
+$find_pay_id  = $conn->prepare("SELECT order_id FROM orders where pay_id = '$pay_id' ");
+$find_pay_id->execute();
+$result_find_pay_id  = $find_pay_id->fetch();
+$order_id = $result_find_pay_id["order_id"];
+//echo $order_id;
 
 ?>
 <!DOCTYPE html>
@@ -56,8 +57,8 @@ $pay_id = $_REQUEST['pay_id'];
                         $total = 0;
                         $call_order_item = $conn->prepare("SELECT * FROM orders_no where order_no_id ='$order_id' ");
                         $call_order_item->execute();
-                        
-                        
+
+
                         while ($result = $call_order_item->fetch()) { ?>
                             <tr>
                                 <?php
@@ -97,14 +98,14 @@ $pay_id = $_REQUEST['pay_id'];
                     </div>
                     <div class="form-group">
                         <label for=""> เวลาโดยประมาณ* : </label>
-                        <input type="time" id="TIME" name="TIME"  required>
+                        <input type="time" id="TIME" name="TIME" required>
                     </div>
-                     
-                        <label for=""> หลักฐานการโอน* : </label>
-                        
-                        Select image to upload:
-                        <input type="file" name="fileToUpload" id="fileToUpload" required>
-                     
+
+                    <label for=""> หลักฐานการโอน* : </label>
+
+                    Select image to upload:
+                    <input type="file" name="fileToUpload" id="fileToUpload" required>
+
                     <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                 </form>
 

@@ -9,6 +9,11 @@ if ($_SESSION["user_status"] == 0) //0 is normal
 }
 
 
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,22 +67,52 @@ if ($_SESSION["user_status"] == 0) //0 is normal
                         <tr>
                             <th scope="col">รหัส ORDER</th>
                             <th scope="col">สถานะ</th>
-                            <th scope="col">หลักฐาน</th>
+                            <th scope="col">ช่องทางการส่ง</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
+                        // track
+
+                        $track_owner = $conn->prepare("SELECT `track_owner_id`, `track_owner_name` FROM `track_owner_id`");
+                        $track_owner->execute();
+
                         while ($result = $query->fetch()) {
                             $pay_id = $result["pay_id"];
                             $order_id = $result['order_id'];
                         ?>
                             <tr>
                                 <th><a href="order_detail.php?order_id=<?php echo $order_id; ?>">#<?php echo $order_id; ?><br>กดเพื่อดูของที่ต้องจัดส่ง</a></th>
-                                <td><p>ต้องจัดส่ง <br> ชำระเงินแล้ว</p></td>
-                                <td></td>
                                 <td>
-                                    
+                                    <p>ต้องจัดส่ง <br> ชำระเงินแล้ว</p>
+                                </td>
+                                <td>
+                                    <form method="POST" action="track_update_SQL.php">
+                                        <label for="track_owner">Choose Delivery:</label>
+                                        <select name="track_owner" id="track_owner">
+                                            <?php
+                                            while ($track_owner_result = $track_owner->fetch()) {
+                                            ?>
+                                                <option value="<?php echo $track_owner_result["track_owner_name"]; ?>">
+                                                    <?php echo $track_owner_result["track_owner_name"]; ?>
+                                                </option>
+                                            <?php
+                                            }
+                                            ?>
+                                            <!-- <option value="volvo">Volvo</option>
+                                            <option value="saab">Saab</option>
+                                            <option value="opel">Opel</option>
+                                            <option value="audi">Audi</option> -->
+                                        </select>
+                                        <div class="form-group">
+
+                                            Track NO.<input type="text" id="TIME" name="TIME" required>
+                                        </div>
+
+
+                                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                                    </form>
                                     <!-- //! form -->
                                 </td>
                             </tr>
