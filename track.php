@@ -7,13 +7,6 @@ if ($_SESSION["user_status"] == 0) //0 is normal
 {
     header("Location: login.php");
 }
-
-
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +37,8 @@ if ($_SESSION["user_status"] == 0) //0 is normal
                             payment.pay_id,
                             payment.pay_price, 
                             payment.pay_status,
-                            payment.pay_imagelocation, 
+                            payment.pay_imagelocation,
+                            track.track_id,
                             track.track_status,
                             track.track_owner,
                             track.track_no
@@ -75,8 +69,7 @@ if ($_SESSION["user_status"] == 0) //0 is normal
                         <?php
                         // track
 
-                        $track_owner = $conn->prepare("SELECT `track_owner_id`, `track_owner_name` FROM `track_owner_id`");
-                        $track_owner->execute();
+                        
 
                         while ($result = $query->fetch()) {
                             $pay_id = $result["pay_id"];
@@ -88,10 +81,12 @@ if ($_SESSION["user_status"] == 0) //0 is normal
                                     <p>ต้องจัดส่ง <br> ชำระเงินแล้ว</p>
                                 </td>
                                 <td>
-                                    <form method="POST" action="track_update_SQL.php">
+                                    <form  action="track_update_SQL.php?track_id=<?php echo $result["track_id"];?>" method="POST">
                                         <label for="track_owner">Choose Delivery:</label>
                                         <select name="track_owner" id="track_owner">
                                             <?php
+                                            $track_owner = $conn->prepare("SELECT `track_owner_id`, `track_owner_name` FROM `track_owner_id`");
+                                            $track_owner->execute();
                                             while ($track_owner_result = $track_owner->fetch()) {
                                             ?>
                                                 <option value="<?php echo $track_owner_result["track_owner_name"]; ?>">
@@ -107,7 +102,7 @@ if ($_SESSION["user_status"] == 0) //0 is normal
                                         </select>
                                         <div class="form-group">
 
-                                            Track NO.<input type="text" id="TIME" name="TIME" required>
+                                            Track NO.<input type="text" id="" name="track_no" required>
                                         </div>
 
 

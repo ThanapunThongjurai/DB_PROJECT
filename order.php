@@ -67,7 +67,7 @@ require_once('connect.php');
 
           
             <h4></h4>
-            <h2>รายการที่ <a href="#">#<?php echo $result["order_id"] ?> </a></h2>
+            <h2>รายการที่ <a href="order_detail.php?order_id=<?php echo $result["order_id"] ?>">#<?php echo $result["order_id"] ?> </a></h2>
           
           <div class="col">
             
