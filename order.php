@@ -37,15 +37,13 @@ require_once('connect.php');
   orders.order_date,
   payment.pay_id,
   payment.pay_price, 
-  payment.pay_status,
-  payment.pay_imagelocation, 
+  payment.pay_status, 
   track.track_status,
   track.track_owner,
   track.track_no
   FROM orders 
   INNER JOIN payment ON orders.pay_id = payment.pay_id
   INNER JOIN track ON orders.track_id = track.track_id
-  WHERE orders.order_username = '$user'
   ORDER BY orders.order_date DESC");
 
 
@@ -55,9 +53,9 @@ require_once('connect.php');
 
 
   <div class="container mt-3">
-    <h1>คำสั่งซื้อของท่าน</h1>
+  <h1>ORDER ทั้งหมด</h1>
     <!--กรอบแดงๆ-->
-    <div class="col-12">
+    <div class="col-12"> 
       <!--กรอบเขียวๆ บนๆอะกรอบเขีวๆ-->
       <?php
       while ($result = $query->fetch()) {
@@ -67,12 +65,12 @@ require_once('connect.php');
         
           <!--กรอบส้มๆ-->
 
-
-          <h4></h4>
-          <h2>รายการที่ <a href="order_detail.php?order_id=<?php echo $result["order_id"] ?>">#<?php echo $result["order_id"] ?> กดเพื่อดูรายละเอียด</a> </h2>
-
+          
+            <h4></h4>
+            <h2>รายการที่ <a href="#">#<?php echo $result["order_id"] ?> </a></h2>
+          
           <div class="col">
-
+            
             <!-- กรอบม่วงๆ -->
             <div class="col">
               <!-- กรอบน้ำเงินๆ -->
@@ -93,23 +91,7 @@ require_once('connect.php');
                     <h4>pay</h4>
                     <p>ราคาสุทธิ :<?php echo $result["pay_price"] ?> บาท</p>
                     <p>สถานะการจ่ายเงิน : <?php echo $result["pay_status"] ?></p>
-                    <?php
-                    if ($result["pay_status"] == "check" || $result["pay_status"] == "pay" ) {
-                    ?>
-                      <p>หลักฐานการชำระเงิน : <?php echo $result["pay_status"] ?></p>
-                      <a href="image/payment/<?php echo $result["pay_imagelocation"] ?>"><img src="image/payment/<?php echo $result["pay_imagelocation"] ?>" width="200px"></a></a>
-                    <?php
-
-                    }
-                    if ($result["pay_status"] == "wait" ) {
-                    ?>
-                      <a href="payment_detail.php?pay_id=<?php echo $result["pay_id"]; ?>" type="button" class="btn btn-outline-info">แจ้งชำระเงิน</a>
-                    <?php
-                    }
-                    ?>
-
-
-
+                    <!-- <a href="payment_detail.php?pay_id=<?php echo $result["pay_id"];?>" type="button" class="btn btn-outline-info">แจ้งชำระเงิน</a> -->
                     <!-- &order_id=</?php echo $result["order_id"];?> -->
                   </div>
                   <div class="col">

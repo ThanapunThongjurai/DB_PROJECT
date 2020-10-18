@@ -3,9 +3,12 @@ if (!isset($_SESSION)) {
     session_start();
 }
 require_once('connect.php');
-$pay_id = $_REQUEST['pay_id'];
 
-
+$order_id = $_GET['order_id'];
+$find_order_id  = $conn->prepare("SELECT pay_id FROM orders where order_id = '$order_id' ");
+$find_order_id ->execute();
+$result_find_order_id  = $find_order_id->fetch();
+$pay_id = $result_find_order_id['pay_id'];
 
 
 
@@ -35,8 +38,8 @@ $pay_id = $_REQUEST['pay_id'];
     ?>
 
     <div class="container mt-3">
-        <h1>แจ้งชำระเงิน </h1>
-        <h2>หมายเลขธุระกรรม #<?php echo $pay_id; ?> หมายเลข <a href="order_detail.php?order_id=<?php echo $order_id; ?>">ORDER #<?php echo $order_id; ?></a></h2>
+        <h1>order_detail</h1>
+        <h2>หมายเลขธุระกรรม #<?php echo $pay_id; ?> ของ <a href="order_detail.php?order_id=<?php echo $order_id; ?>">ORDER #<?php echo $order_id; ?></a></h2>
         <div class="col-12">
             <div class=" card table-responsive">
                 <h3>สิ่งของใน order</h3>
@@ -56,8 +59,7 @@ $pay_id = $_REQUEST['pay_id'];
                         $total = 0;
                         $call_order_item = $conn->prepare("SELECT * FROM orders_no where order_no_id ='$order_id' ");
                         $call_order_item->execute();
-                        
-                        
+
                         while ($result = $call_order_item->fetch()) { ?>
                             <tr>
                                 <?php
@@ -90,7 +92,7 @@ $pay_id = $_REQUEST['pay_id'];
                                                         $result_price = $call_price->fetch();
                                                         echo $result_price["pay_price"]; ?> บาท.</h3>
 
-                <form action="paymnet_update_SQL.php?pay_id=<?php echo $pay_id; ?>" method="POST" enctype="multipart/form-data">
+                <!-- <form action="paymnet_update_SQL.php?pay_id=<?php echo $pay_id; ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="">วันที่ชำระเงิน* : </label>
                         <input type="date" name="DATE" required>
@@ -106,7 +108,7 @@ $pay_id = $_REQUEST['pay_id'];
                         <input type="file" name="fileToUpload" id="fileToUpload" required>
                      
                     <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                </form>
+                </form> -->
 
             </div>
         </div>

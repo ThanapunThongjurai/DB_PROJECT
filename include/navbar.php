@@ -79,13 +79,13 @@ if (!isset($_SESSION)) {
             <a class="nav-link" href="admin.php">Admin : add remove update </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="check_payment_transection.php">Admin : ตรวจสอบแจ้งชำระ</a>
+            <a class="nav-link" href="payment_check.php">Admin : ตรวจสอบแจ้งชำระ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="oreder.php">Admin : ordersของลูกค้า</a>
+            <a class="nav-link" href="order.php">Admin : ordersของลูกค้า</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="oreder.php">Admin : แปะเลขTRACKING ให้order ที่จ่ายเงินแล้ว</a>
+            <a class="nav-link" href="track.php">Admin : แปะเลขTRACKING ให้order ที่จ่ายเงินแล้ว</a>
           </li>
         <?php
         }
