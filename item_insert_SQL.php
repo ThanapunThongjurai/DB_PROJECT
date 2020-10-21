@@ -67,12 +67,13 @@ echo $itemlocation;
 $stmt = $conn->prepare("SELECT item_name FROM `item` WHERE item_name = '$item_name'");
 $stmt->execute();                               // run sql before
 $result = $stmt->fetch();
+echo $itemlocation;
 if (($item_name != $result["item_name"]) && $item_name != "") {
 
     $inster_item = $conn->prepare("INSERT INTO `item` (`id_item`, `item_name`, `item_price`, `item_type`, `item_disc`, `item_preview`, `item_amount`, `imagelocation`) 
     VALUES (NULL, '$item_name', '$item_price', '$item_type', '$item_disc', '$item_preview', '$item_amount', '$itemlocation');");
     $inster_item->execute();
-    header("Location: admin.php");
+    //header("Location: admin.php");
 } else {
     echo "ผิด";
     header("Location: item_insert.php?msg=invalid");
