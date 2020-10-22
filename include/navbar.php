@@ -76,7 +76,7 @@ if (!isset($_SESSION)) {
         if ($_SESSION["user_status"] == 1) {
         ?>
           <li class="nav-item">
-            <a class="nav-link" href="admin.php">Admin : add remove update </a>
+            <a class="nav-link" href="admin.php">Admin : ITEM add remove update </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="payment_check.php">Admin : ตรวจสอบแจ้งชำระ</a>

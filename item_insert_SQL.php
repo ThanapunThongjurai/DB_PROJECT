@@ -57,7 +57,6 @@ if ($uploadOk == 0) {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     $itemlocation = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])).'';
     echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-    echo $itemlocation;
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
@@ -73,10 +72,11 @@ if (($item_name != $result["item_name"]) && $item_name != "") {
     $inster_item = $conn->prepare("INSERT INTO `item` (`id_item`, `item_name`, `item_price`, `item_type`, `item_disc`, `item_preview`, `item_amount`, `imagelocation`) 
     VALUES (NULL, '$item_name', '$item_price', '$item_type', '$item_disc', '$item_preview', '$item_amount', '$itemlocation');");
     $inster_item->execute();
+    echo "<br>ไฟล์ถูกเก็บอยู่ที่นี้นะโว้ย ". $itemlocation;
     //header("Location: admin.php");
 } else {
     echo "ผิด";
-    header("Location: item_insert.php?msg=invalid");
+    //header("Location: item_insert.php?msg=invalid");
 }
 //$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 /*  

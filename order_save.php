@@ -83,7 +83,7 @@ include("connect.php");
         echo "ชื่อ  qty :: " . $qty; //จำนวนของที่ต้องการ
         echo "<br />";
 
-        $item_id = $row["item_name"];
+        $item_id = $row["id_item"];
 
         $item_to_order_no = $conn->prepare("INSERT INTO `orders_no` (`orders_no`, `order_no_id`, `order_no_item`, `order_no_amount`) 
         VALUES (NULL, '$max_order_id', '$item_id', '$qty');");

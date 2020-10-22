@@ -42,13 +42,13 @@ require_once('connect.php');
         <div class="col mb-3">
           <div class="card">
             <!--img src="images/gallery/<?php echo $result; ?>.jpg"-->
-            <img src="image/item/<?php echo $result["imagelocation"] ?>" class="card-img-top" alt="...">
+            <img src="image/item/<?php echo $result["imagelocation"] ?>" class="card-img-top img-thumbnail" alt="..." >
             <div class="card-body">
               <h5 class="card-title"><?php $result["item_preview"]; ?></h5>
-              <p class="card-text">Amoung us charlacter item_name <?php echo $result["item_name"] ?></p>
+              <p class="card-text"><?php echo $result["item_name"] ?></p>
             </div>
             <a class="btn btn-primary" href="item_detail.php?id_item=<?php echo $result['id_item']; ?>" role="button">
-              <h1>ซื้อกูสิ</h1>
+              <h1>สนใจกดเลยราคาอยู่ข้างใน</h1>
             </a>
           </div>
         </div><?php

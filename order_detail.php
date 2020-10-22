@@ -6,7 +6,7 @@ require_once('connect.php');
 
 $order_id = $_GET['order_id'];
 $find_order_id  = $conn->prepare("SELECT pay_id FROM orders where order_id = '$order_id' ");
-$find_order_id ->execute();
+$find_order_id->execute();
 $result_find_order_id  = $find_order_id->fetch();
 $pay_id = $result_find_order_id['pay_id'];
 
@@ -70,7 +70,9 @@ $pay_id = $result_find_order_id['pay_id'];
                                 ?>
 
                                 <th scope="row"><?php echo $count; ?></th>
-                                <td><a href="item_detail.php?id_item=<?php echo $result_item['id_item']; ?>"><img src="image/item/<?php echo $result_item["imagelocation"] ?>" alt="..." class="   " height="50px"> <?php echo $result_item["item_name"]; ?></a></td>
+                                <td><a href="item_detail.php?id_item=<?php echo $result_item['id_item']; ?>">
+                                <img src="image/item/<?php echo $result_item["imagelocation"];?>" height="50px"> 
+                                <?php echo $result_item["item_name"]; ?></a></td>
                                 <td><?php echo $result["order_no_amount"]; ?> ชิ้น</td>
                                 <td><?php echo $result["order_no_amount"] * $result_item["item_price"]; ?> บาท</td>
                                 <!-- <?php $total = $total + $result["order_no_amount"] * $result_item["item_price"]; ?> -->

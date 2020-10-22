@@ -21,12 +21,13 @@ if (!isset($_SESSION["user_status"]))
     <title>Checkout</title>
 </head>
 <style tpye="text/css">
-  body {
-    background-image: url('image/wall.jpg');
-    -webkit-background-size: cover;
-    background-attachment: fixed;
-  }
+    body {
+        background-image: url('image/wall.jpg');
+        -webkit-background-size: cover;
+        background-attachment: fixed;
+    }
 </style>
+
 <body>
     <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
     <form id="frmcart" name="frmcart" method="post" action="order_save.php">
@@ -42,9 +43,9 @@ if (!isset($_SESSION["user_status"]))
                 <td align="center" bgcolor="#F9D5E3">รวม/รายการ</td>
             </tr>
             <?php
-            
+
             $total = 0;
-            
+
             foreach ($_SESSION['cart'] as $id_item => $qty) {
                 $stmt = $conn->prepare("SELECT * FROM `item` WHERE id_item = '$id_item'");
                 $stmt->execute();                               // run sql before
@@ -103,6 +104,7 @@ if (!isset($_SESSION["user_status"]))
                     <td bgcolor="#EEEEEE">เบอร์ติดต่อ</td>
                     <td><input name="phone" type="text" value="<?php echo $user['user_tel'];  ?>" disabled id="phone" required /></td>
                 </tr>
+
                 <tr>
                     <td colspan="2" align="center" bgcolor="#CCCCCC">
                         <input type="submit" name="Submit2" value="สั่งซื้อ" />
@@ -111,6 +113,20 @@ if (!isset($_SESSION["user_status"]))
             </table>
 
     </form>
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <a href="user_data.php">
+                <button type="button" class="btn btn-outline-info">แก้ไขข้อมูลการจัดส่ง</button>
+            </a>
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+    </div>
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
