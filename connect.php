@@ -1,9 +1,9 @@
 <?php
 date_default_timezone_set('Asia/Bangkok');
 $servername = "localhost";
-$dbname = "shop";
-$username = "root";
-$password = "";
+$dbname = "thanapun.th";
+$username = "thanapun.th";
+$password = "yOwd1uaehg8AIKBt";
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
