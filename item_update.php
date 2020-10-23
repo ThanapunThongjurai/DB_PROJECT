@@ -87,7 +87,23 @@ $item_data= $stmt->fetch();
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">item_type</label>
-                <input name="item_type" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_type']; ?>">
+                <select name="item_type" id="track_owner">
+                    <?php
+                    $track_owner = $conn->prepare("SELECT * FROM item_type");
+                    $track_owner->execute();
+                    while ($track_owner_result = $track_owner->fetch()) {
+                    ?>
+                        <option value="<?php echo $track_owner_result["item_type_id"]; ?>">
+                            <?php echo $track_owner_result["item_type_name"]; ?>
+                        </option>
+                    <?php
+                    }
+                    ?>
+                    <!-- <option value="volvo">Volvo</option>
+                                            <option value="saab">Saab</option>
+                                            <option value="opel">Opel</option>
+                                            <option value="audi">Audi</option> -->
+                </select>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">item_amount</label>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2020 at 11:50 AM
+-- Generation Time: Oct 23, 2020 at 09:24 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -43,11 +43,12 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`id_item`, `item_name`, `item_price`, `item_type`, `item_disc`, `item_preview`, `item_amount`, `imagelocation`) VALUES
-(3, '3', 4, 3, '4', '3', 0, '3.png'),
+(3, '3', 4, 2, '4', '3', 0, '3.png'),
 (7, '7', 7, 7, '7', '7', 0, '7.png'),
-(8, '8', 8, 8, '8', '8', 6, '8.png'),
+(8, '8', 8, 8, '8', '8', 5, '8.png'),
 (9, '9', 9, 9, '9', '9', 4, '9.png'),
-(43, '12', 12, 12, '12', '12', 12, 'unknown (1).png');
+(46, '20', 20, 20, '20', '20', 20, ''),
+(47, '30', 0, 0, '', '', 0, '121497093_806889730066179_8888255025633634221_n.jpg');
 
 -- --------------------------------------------------------
 
@@ -59,6 +60,17 @@ CREATE TABLE `item_type` (
   `item_type_id` int(3) NOT NULL COMMENT 'หมายเลข',
   `item_type_name` varchar(16) NOT NULL COMMENT 'ชื่อ บ ขนส่ง'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `item_type`
+--
+
+INSERT INTO `item_type` (`item_type_id`, `item_type_name`) VALUES
+(1, 'เสื้อ'),
+(2, 'กางเกง'),
+(3, 'ร้องเท้า'),
+(4, 'กระเป๋า'),
+(5, 'อื่นๆ');
 
 -- --------------------------------------------------------
 
@@ -79,6 +91,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `order_username`, `pay_id`, `track_id`, `order_date`) VALUES
+(48, 0, 61, 49, '2020-10-20 21:14:24'),
+(47, 0, 60, 48, '2020-10-18 22:48:28'),
 (46, 0, 59, 47, '2020-10-18 16:15:23'),
 (45, 0, 58, 46, '2020-10-18 15:58:28'),
 (44, 0, 57, 45, '2020-10-18 14:39:38');
@@ -119,7 +133,9 @@ INSERT INTO `orders_no` (`orders_no`, `order_no_id`, `order_no_item`, `order_no_
 (31, 43, 7, 4),
 (32, 44, 8, 1),
 (33, 45, 8, 1),
-(34, 46, 9, 1);
+(34, 46, 9, 1),
+(35, 47, 12, 2),
+(36, 48, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -141,9 +157,11 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`pay_id`, `pay_username`, `pay_status`, `pay_price`, `pay_time`, `pay_imagelocation`) VALUES
+(61, 0, 'pay', 8, '2020-10-29 21:18:00.000000', '121588820_5187923337899801_8389119168624097045_o.png'),
 (57, 0, 'pay', 8, '2020-10-19 17:39:00.000000', '3.png'),
 (58, 0, 'pay', 8, '2020-10-19 16:48:00.000000', '7.png'),
-(59, 0, 'pay', 9, '2020-10-08 16:50:00.000000', 'Screenshot 2020-10-10 144329.png');
+(59, 0, 'pay', 9, '2020-10-08 16:50:00.000000', 'Screenshot 2020-10-10 144329.png'),
+(60, 0, 'pay', 24, '2020-10-19 22:52:00.000000', 'red.png');
 
 -- --------------------------------------------------------
 
@@ -166,7 +184,9 @@ CREATE TABLE `track` (
 INSERT INTO `track` (`track_id`, `track_username`, `track_owner`, `track_no`, `track_status`) VALUES
 (45, 0, 'FLASH', '123456', 'send'),
 (46, 0, 'KERRY', '12', 'send'),
-(47, 0, 'KERRY', '1234', 'send');
+(47, 0, 'KERRY', '1234', 'send'),
+(48, 0, 'EMS', '123', 'send'),
+(49, 0, NULL, NULL, 'wait');
 
 -- --------------------------------------------------------
 
@@ -276,37 +296,37 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id_item` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัสสินค้า', AUTO_INCREMENT=44;
+  MODIFY `id_item` int(10) NOT NULL AUTO_INCREMENT COMMENT 'รหัสสินค้า', AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `item_type`
 --
 ALTER TABLE `item_type`
-  MODIFY `item_type_id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'หมายเลข';
+  MODIFY `item_type_id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'หมายเลข', AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'เลขorder', AUTO_INCREMENT=47;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'เลขorder', AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `orders_no`
 --
 ALTER TABLE `orders_no`
-  MODIFY `orders_no` int(10) NOT NULL AUTO_INCREMENT COMMENT 'runไว้เป็น pimary เฉยๆ', AUTO_INCREMENT=35;
+  MODIFY `orders_no` int(10) NOT NULL AUTO_INCREMENT COMMENT 'runไว้เป็น pimary เฉยๆ', AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `pay_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `pay_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `track`
 --
 ALTER TABLE `track`
-  MODIFY `track_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `track_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `track_owner_id`

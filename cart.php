@@ -15,6 +15,11 @@ if ($act == 'add' && !empty($id_item)) {
     } else {
         $_SESSION['cart'][$id_item] = 1;
     }
+
+
+    
+
+    
 }
 
 if ($act == 'remove' && !empty($id_item))  //ยกเลิกการสั่งซื้อ

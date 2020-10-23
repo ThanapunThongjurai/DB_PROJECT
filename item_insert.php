@@ -3,7 +3,7 @@ session_start();
 require_once('connect.php');
 if ($_SESSION["user_status"] == 0) //0 is normal 
 {
-  header("Location: login.php");
+    header("Location: login.php");
 }
 $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 ?>
@@ -65,7 +65,23 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">item_type</label>
-                <input name="item_type" class="form-control" aria-describedby="emailHelp">
+                <select name="item_type" id="track_owner">
+                    <?php
+                    $track_owner = $conn->prepare("SELECT * FROM item_type");
+                    $track_owner->execute();
+                    while ($track_owner_result = $track_owner->fetch()) {
+                    ?>
+                        <option value="<?php echo $track_owner_result["item_type_id"]; ?>">
+                            <?php echo $track_owner_result["item_type_name"]; ?>
+                        </option>
+                    <?php
+                    }
+                    ?>
+                    <!-- <option value="volvo">Volvo</option>
+                                            <option value="saab">Saab</option>
+                                            <option value="opel">Opel</option>
+                                            <option value="audi">Audi</option> -->
+                </select>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">item_amount</label>
@@ -81,12 +97,12 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
             </div>
 
 
-          
-                Select image to upload:
-                <input type="file" name="fileToUpload" id="fileToUpload">
+
+            Select image to upload:
+            <input type="file" name="fileToUpload" id="fileToUpload">
 
 
-            
+
             <button type="submit" class="btn btn-primary" name="submit">Submit</button>
         </form>
     </div>

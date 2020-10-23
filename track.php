@@ -92,9 +92,7 @@ if ($_SESSION["user_status"] == 0) //0 is normal
                                                 <option value="<?php echo $track_owner_result["track_owner_name"]; ?>">
                                                     <?php echo $track_owner_result["track_owner_name"]; ?>
                                                 </option>
-                                                <option value="<?php echo $track_owner_result["track_owner_name"]; ?>">
-                                                    <?php echo $track_owner_result["track_owner_name"]; ?>
-                                                </option>
+                                                 
                                             <?php
                                             }
                                             ?>
