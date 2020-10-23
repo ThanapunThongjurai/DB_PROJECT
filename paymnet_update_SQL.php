@@ -63,7 +63,7 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     $itemlocation = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
-    echo $itemlocation;
+    echo "ไฟล์นี้ถูก upload".$itemlocation." ให้มันจบที่ตรงนี้";
     echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
   } else {
     echo "Sorry, there was an error uploading your file.";
@@ -81,4 +81,4 @@ if ($itemlocation != "") {
     `pay_imagelocation`='$itemlocation' WHERE pay_id = '$pay_id'");
   $insert_payment_image->execute();
 }
-header("Location: payment.php");
+//header("Location: payment.php");
