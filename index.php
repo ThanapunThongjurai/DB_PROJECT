@@ -23,9 +23,11 @@ require_once('connect.php');
   body {
     background-image: url('image/wall.jpg');
     -webkit-background-size: cover;
-    background-attachment: fixed;
+    background-attachment: fixed;-
   }
 </style>
+
+
 
 <body>
 
@@ -80,9 +82,9 @@ require_once('connect.php');
             <div class="col-md-3">
               <div class="card" style="width: 18rem;">
                 <!--img src="images/gallery/<?php echo $result; ?>.jpg"-->
-                <img src="image/item/<?php echo $result["imagelocation"] ?>" class="card-img-top img-thumbnail" alt="...">
+                <img style="width: 300px; height: 300px;" src="image/item/<?php echo $result["imagelocation"] ?>" class="card-img-top img-thumbnail" alt="...">
                 <div class="card-body">
-                  <h3 class="card-title"><?php echo $result["item_name"] ?></h3>
+                  <h5 class="card-title"><?php echo $result["item_name"] ?></h5>
                   <p class="text-left"><?php echo $result["item_preview"]; ?></p>
                   <h5 class="text-right"><?php echo $result["item_price"]." บาท"; ?></h5>
                 </div>
