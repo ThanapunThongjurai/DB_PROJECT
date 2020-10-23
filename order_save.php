@@ -11,6 +11,7 @@ include("connect.php");
 </head>
 
 <body>
+<?php include ('header.inc.php'); ?>
 
     <!--สร้างตัวแปรสำหรับบันทึกการสั่งซื้อ -->
     <?php

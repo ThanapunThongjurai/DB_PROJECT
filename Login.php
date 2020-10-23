@@ -23,6 +23,7 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 </style>
 
 <body>
+<?php include ('header.inc.php'); ?>
   <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
 
 

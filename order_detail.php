@@ -33,6 +33,7 @@ $pay_id = $result_find_order_id['pay_id'];
 </style>
 
 <body>
+<?php include ('header.inc.php'); ?>
     <?php include_once (__DIR__) . ('/include/navbar.php');
 
     ?>

@@ -38,6 +38,7 @@ $item_data= $stmt->fetch();
 </style>
 
 <body>
+<?php include ('header.inc.php'); ?>
     <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
 
 

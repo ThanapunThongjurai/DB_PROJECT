@@ -28,6 +28,7 @@ if ($_SESSION["user_status"] == 0) //0 is normal
 </style>
 
 <body>
+<?php include ('header.inc.php'); ?>
     <?php include_once (__DIR__) . ('/include/navbar.php');
     $user =  $_SESSION["user_username"];
     $query = $conn->prepare("SELECT 
