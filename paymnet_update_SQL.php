@@ -1,10 +1,7 @@
 <?php
 session_start();
 require_once('connect.php');
-if ($_SESSION["user_status"] == 0) //0 is normal 
-{
-  header("Location: login.php");
-}
+
 $pay_id = $_GET['pay_id'];
 $DATE = $_POST['DATE'];
 $TIME = $_POST['TIME'];
@@ -63,7 +60,7 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     $itemlocation = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
-    echo "ไฟล์นี้ถูก upload".$itemlocation." ให้มันจบที่ตรงนี้";
+    echo "ไฟล์นี้ถูก upload" . $itemlocation . " ให้มันจบที่ตรงนี้";
     echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
   } else {
     echo "Sorry, there was an error uploading your file.";
@@ -81,4 +78,4 @@ if ($itemlocation != "") {
     `pay_imagelocation`='$itemlocation' WHERE pay_id = '$pay_id'");
   $insert_payment_image->execute();
 }
-//header("Location: payment.php");
+header("Location: payment.php");  
