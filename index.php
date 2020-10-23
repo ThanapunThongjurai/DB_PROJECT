@@ -78,12 +78,13 @@ require_once('connect.php');
           while ($result = $stmt->fetch()) {
           ?>
             <div class="col-md-3">
-              <div class="card">
+              <div class="card" style="width: 18rem;">
                 <!--img src="images/gallery/<?php echo $result; ?>.jpg"-->
                 <img src="image/item/<?php echo $result["imagelocation"] ?>" class="card-img-top img-thumbnail" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title"><?php echo $result["item_name"] ?></h5>
-                  <p class="card-text"><?php $result["item_preview"]; ?></p>
+                  <h3 class="card-title"><?php echo $result["item_name"] ?></h3>
+                  <p class="text-left"><?php echo $result["item_preview"]; ?></p>
+                  <h5 class="text-right"><?php echo $result["item_price"]." บาท"; ?></h5>
                 </div>
                 <a class="btn btn-primary" href="item_detail.php?id_item=<?php echo $result['id_item']; ?>" role="button">
                   <h5>สนใจกดเลยราคาอยู่ข้างใน</h5>
