@@ -37,7 +37,8 @@ require_once('connect.php');
   orders.order_date,
   payment.pay_id,
   payment.pay_price, 
-  payment.pay_status, 
+  payment.pay_status,
+  payment.pay_imagelocation, 
   track.track_status,
   track.track_owner,
   track.track_no
@@ -53,9 +54,9 @@ require_once('connect.php');
 
 
   <div class="container mt-3">
-  <h1>ORDER ทั้งหมด</h1>
+    <h1>ORDER ทั้งหมด</h1>
     <!--กรอบแดงๆ-->
-    <div class="col-12"> 
+    <div class="col-12">
       <!--กรอบเขียวๆ บนๆอะกรอบเขีวๆ-->
       <?php
       while ($result = $query->fetch()) {
@@ -65,12 +66,12 @@ require_once('connect.php');
         
           <!--กรอบส้มๆ-->
 
-          
-            <h4></h4>
-            <h2>รายการที่ <a href="order_detail.php?order_id=<?php echo $result["order_id"] ?>">#<?php echo $result["order_id"] ?> </a></h2>
-          
+
+          <h4></h4>
+          <h2>รายการที่ <a href="order_detail.php?order_id=<?php echo $result["order_id"] ?>">#<?php echo $result["order_id"] ?> </a></h2>
+
           <div class="col">
-            
+
             <!-- กรอบม่วงๆ -->
             <div class="col">
               <!-- กรอบน้ำเงินๆ -->
@@ -91,8 +92,11 @@ require_once('connect.php');
                     <h4>pay</h4>
                     <p>ราคาสุทธิ :<?php echo $result["pay_price"] ?> บาท</p>
                     <p>สถานะการจ่ายเงิน : <?php echo $result["pay_status"] ?></p>
-                    <!-- <a href="payment_detail.php?pay_id=<?php echo $result["pay_id"];?>" type="button" class="btn btn-outline-info">แจ้งชำระเงิน</a> -->
-                    <!-- &order_id=</?php echo $result["order_id"];?> -->
+                    <?php if ($result["pay_status"] == "pay") { ?>
+                      <a href="image/payment/<?php echo $result["pay_imagelocation"] ?>">
+                        <img src="image/payment/<?php echo $result["pay_imagelocation"] ?>" width="200px">
+                      </a>
+                    <?php } ?>
                   </div>
                   <div class="col">
                     <h4>track</h4>
