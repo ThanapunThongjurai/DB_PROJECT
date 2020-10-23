@@ -59,7 +59,7 @@ require_once('connect.php');
       <div class="col-md-9">
         <div class="row">
           <?php
-          if (!isset($_GET["type"])) {
+          if (isset($_GET["type"])) {
             $item_type_get = $_GET["type"];
           }
           else
