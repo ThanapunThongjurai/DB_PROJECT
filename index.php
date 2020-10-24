@@ -17,7 +17,7 @@ require_once('connect.php');
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-  <title>Hello, world!</title>
+  <title>suberSHOP</title>
 </head> 
 
 <body>

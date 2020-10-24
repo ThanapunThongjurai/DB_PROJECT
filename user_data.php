@@ -28,23 +28,15 @@ $user = $stmt->fetch();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-    <title>Hello, world!</title>
+    <title>user_editer</title>
 </head>
 
 
 <body>
     <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
-
-
-
-    <div class="container-fluid">
-        <div class="row">
-
-
-        </div>
-    </div>
-    <div class="container">
-
+ 
+    <div class="container card ">
+<h1>ข้อมูล ของคุณ <?php echo $user['user_username']; ?></h1>
         <!--
       <?php
         if ($item_update_id != 0) { ?>
@@ -103,7 +95,7 @@ $user = $stmt->fetch();
 
 
 
-            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+            <button type="submit" class="btn btn-primary" name="submit">ยืนยันการแก้ไข</button>
         </form>
     </div>
 

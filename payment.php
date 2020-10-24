@@ -19,14 +19,7 @@ require_once('connect.php');
 
   <title>Hello, world!</title>
 </head>
-<style tpye="text/css">
-  body {
-    background-image: url('image/wall.jpg');
-    -webkit-background-size: cover;
-    background-attachment: fixed;
-  }
-</style>
-
+ 
 <body>
   <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
   <?php
@@ -54,7 +47,7 @@ require_once('connect.php');
 
 
   <div class="container mt-3">
-  <h1>แจ้งชำระเงิน</h1>
+  <h1 class="card text-md-center">แจ้งชำระเงิน</h1>
     <!--กรอบแดงๆ-->
     <div class="col-12"> 
       <!--กรอบเขียวๆ บนๆอะกรอบเขีวๆ-->

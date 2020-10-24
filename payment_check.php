@@ -19,7 +19,7 @@ if ($_SESSION["user_status"] == 0) //0 is normal
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <title>Hello, world!</title>
+    <title>your_PAYMENT</title>
 </head>
 
 
@@ -28,8 +28,8 @@ if ($_SESSION["user_status"] == 0) //0 is normal
 
     ?>
 
-    <div class="container mt-3">
-        <h1>เช็คการชำระเงินของลูกค้า</h1>
+    <div class="container mt-3 card">
+        <h1 >เช็คการชำระเงินของลูกค้า</h1>
         <div class="col-12">
             <div class=" card table-responsive">
                 <table class="table dark">

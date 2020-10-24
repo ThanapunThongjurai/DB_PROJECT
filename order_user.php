@@ -17,15 +17,9 @@ require_once('connect.php');
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-  <title>Hello, world!</title>
+  <title>คำสั่งซื้อของท่าน</title>
 </head>
-<style tpye="text/css">
-  body {
-    background-image: url('image/wall.jpg');
-    -webkit-background-size: cover;
-    background-attachment: fixed;
-  }
-</style>
+ 
 
 <body>
   <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
@@ -55,7 +49,7 @@ require_once('connect.php');
 
 
   <div class="container mt-3">
-    <h1>คำสั่งซื้อของท่าน</h1>
+    <h1 class="card text-md-center">คำสั่งซื้อของท่าน</h1>
     <!--กรอบแดงๆ-->
     <div class="col-12">
       <!--กรอบเขียวๆ บนๆอะกรอบเขีวๆ-->

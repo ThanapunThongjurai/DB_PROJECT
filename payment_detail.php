@@ -20,7 +20,7 @@ $order_id = $result_find_pay_id["order_id"];
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <title>Hello, world!</title>
+    <title>แจ้งชำระเงิน</title>
 </head>
 
 
@@ -29,7 +29,7 @@ $order_id = $result_find_pay_id["order_id"];
 
     ?>
 
-    <div class="container mt-3">
+    <div class="container mt-3 card">
         <h1>แจ้งชำระเงิน </h1>
         <h2>หมายเลขธุระกรรม #<?php echo $pay_id; ?> หมายเลข <a href="order_detail.php?order_id=<?php echo $order_id; ?>">ORDER #<?php echo $order_id; ?></a></h2>
         <div class="col-12">
