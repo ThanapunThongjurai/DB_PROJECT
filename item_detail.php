@@ -28,13 +28,7 @@ while ($item_type_result = $item_type->fetch()) {
 
     <title>Hello, world!</title>
 </head>
-<style tpye="text/css">
-    body {
-        background-image: url('image/wall.jpg');
-        -webkit-background-size: cover;
-        background-attachment: fixed;
-    }
-</style>
+
 
 <body>
 

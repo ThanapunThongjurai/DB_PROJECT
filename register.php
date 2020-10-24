@@ -1,5 +1,7 @@
 <?php
-$msg = isset($_GET['msg']) ? $_GET['msg'] : '';
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,13 +16,7 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 
     <title>Hello, world!</title>
 </head>
-<style tpye="text/css">
-    body {
-        background-image: url('image/wall.jpg');
-        -webkit-background-size: cover;
-        background-attachment: fixed;
-    }
-</style>
+
 
 <body>
     <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
@@ -39,7 +35,7 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
         ?>
             <script type="text/javascript">
                 swal("", "<?php echo $msg; ?> !!", "error");
-            </script> 
+            </script>
         <?php
         }
         ?>

@@ -120,3 +120,10 @@ if (!isset($_SESSION)) {
     </ul>
   </div>
 </nav>
+
+<style tpye="text/css">
+  body {
+    background-image: url('image/space.jpg');
+    background-repeat:initial;
+  }
+</style>

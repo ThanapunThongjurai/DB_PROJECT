@@ -22,13 +22,7 @@ $order_id = $result_find_pay_id["order_id"];
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <title>Hello, world!</title>
 </head>
-<style tpye="text/css">
-    body {
-        background-image: url('image/wall.jpg');
-        -webkit-background-size: cover;
-        background-attachment: fixed;
-    }
-</style>
+
 
 <body>
     <?php include_once (__DIR__) . ('/include/navbar.php');

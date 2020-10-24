@@ -11,9 +11,9 @@ $item_type = $conn->prepare("SELECT * FROM `item_type`");
 $item_type->execute();
 $item_type_count = 0;
 while ($item_type_result = $item_type->fetch()) {
-   $item_type_array[$item_type_count][0] = $item_type_result["item_type_id"];
-   $item_type_array[$item_type_count][1] = $item_type_result["item_type_name"];
-   $item_type_count++ . "<br>";
+  $item_type_array[$item_type_count][0] = $item_type_result["item_type_id"];
+  $item_type_array[$item_type_count][1] = $item_type_result["item_type_name"];
+  $item_type_count++ . "<br>";
 }
 ?>
 <!DOCTYPE html>
@@ -29,20 +29,13 @@ while ($item_type_result = $item_type->fetch()) {
 
   <title>Hello, world!</title>
 </head>
-<style tpye="text/css">
-  body {
-    background-image: url('image/wall.jpg');
-    -webkit-background-size: cover;
-    background-attachment: fixed;
-  }
-</style>
 
 <body>
 
 
   <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-3">
+    <div class="row card">
       <?php
       $stmt = $conn->prepare("SELECT * FROM `item`");
       $stmt->execute();                               // run sql before
@@ -74,11 +67,9 @@ while ($item_type_result = $item_type->fetch()) {
                 <td>
                   <?php
 
-                  for($i = 0 ; $i <$item_type_count;$i++)
-                  {
-                    if($result["item_type"] == $item_type_array[$i][0])
-                    {
-                      echo $result["item_type"].$item_type_array[$i][1];
+                  for ($i = 0; $i < $item_type_count; $i++) {
+                    if ($result["item_type"] == $item_type_array[$i][0]) {
+                      echo $result["item_type"] . $item_type_array[$i][1];
                     }
                   }
                   // echo $result["item_type"];

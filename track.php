@@ -19,13 +19,7 @@ if ($_SESSION["user_status"] == 0) //0 is normal
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <title>Hello, world!</title>
 </head>
-<style tpye="text/css">
-    body {
-        background-image: url('image/wall.jpg');
-        -webkit-background-size: cover;
-        background-attachment: fixed;
-    }
-</style>
+
 
 <body>
     <?php include_once (__DIR__) . ('/include/navbar.php');
@@ -52,7 +46,7 @@ if ($_SESSION["user_status"] == 0) //0 is normal
     $query->execute();
     ?>
 
-    <div class="container mt-3">
+    <div class="container mt- card">
         <h1>จัดส่งและนำเลขพัสดุติดตามเข้าระบบ</h1>
         <div class="col-12">
             <div class=" card table-responsive">

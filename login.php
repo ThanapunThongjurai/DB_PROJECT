@@ -1,5 +1,8 @@
 <?php
-$msg = isset($_GET['msg']) ? $_GET['msg'] : '';
+if(isset($_GET['msg']))
+{
+  $msg = $_GET['msg'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -20,13 +20,7 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 
     <title>Hello, world!</title>
 </head>
-<style tpye="text/css">
-    body {
-        background-image: url('image/wall.jpg');
-        -webkit-background-size: cover;
-        background-attachment: fixed;
-    }
-</style>
+
 
 <body>
     <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
