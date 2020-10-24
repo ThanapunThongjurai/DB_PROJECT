@@ -63,7 +63,7 @@ $page     = basename($_SERVER['PHP_SELF'], ".php");
 
           if (isset($_GET["search"])) {
             echo $search = $_GET["search"];
-            $stmt = $conn->prepare("SELECT * FROM `item` WHERE item_name = LIKE '%$search%'");
+            $stmt = $conn->prepare("SELECT * FROM `item` WHERE item_name LIKE '%$search%'");
           } else {
             if ($item_type_get == "") {
               $stmt = $conn->prepare("SELECT * FROM `item`");
