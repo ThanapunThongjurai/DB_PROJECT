@@ -26,7 +26,7 @@ while ($item_type_result = $item_type->fetch()) {
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-    <title>Hello, world!</title>
+    <title>suberSHOP</title>
 </head>
 
 
@@ -49,9 +49,11 @@ while ($item_type_result = $item_type->fetch()) {
                     }
                     else {
                     ?>
-                        <a class="btn btn-primary" href="cart.php?id_item=<?php echo $id_item['id_item']; ?>&act=add" role="button">
-                        <h4>หยิบลงตะกร้า</h4>
-                    </a>
+                        <a href="cart.php?id_item=<?php echo $id_item['id_item']; ?>&act=add"><button type="button" class="btn btn-outline-dark">
+                        <h4>หยิบลงตะกร้า
+                        </h4>
+                        </button>
+                        </a>
                     <?php
                     }
                     ?>

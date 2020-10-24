@@ -14,7 +14,7 @@ if (isset($_GET['msg'])) {
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-    <title>Hello, world!</title>
+    <title>suberSHOP</title>
 </head>
 
 

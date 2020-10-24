@@ -73,7 +73,7 @@ if ($act == 'update') {
                 <?php
                 $total = 0;
                 if (!empty($_SESSION['cart'])) {
-                    // include("connect.php");                                                             แก้ด้วยนะบักเซฟ
+                    //include("connect.php");                                                            แก้ด้วย
                     foreach ($_SESSION['cart'] as $id_item => $qty) {
                         $stmt = $conn->prepare("SELECT * FROM `item` WHERE id_item = '$id_item'");
                         $stmt->execute();                               // run sql before

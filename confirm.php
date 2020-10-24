@@ -16,7 +16,7 @@ if (!isset($_SESSION["user_status"]))
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-    <title>Hello, world!</title>
+    <title>suberSHOP</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Checkout</title>
 </head>
