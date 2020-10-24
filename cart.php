@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once('connect.php');
 $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 $id_item = isset($_REQUEST['id_item']) ? $_REQUEST['id_item'] : '';
 $act = isset($_REQUEST['act']) ? $_REQUEST['act'] : 'update';
@@ -55,9 +55,9 @@ if ($act == 'update') {
     <div class="container card">
 
         <?php
-        // echo '<pre>';
-        // print_r($_SESSION['cart']);
-        // echo '</pre>'; ?>
+        echo '<pre>';
+        print_r($_SESSION['cart']);
+        echo '</pre>'; ?>
         
         <h1 class="text-md-center">ตะกร้าสินค้า</h1>
         <form id="frmcart" name="frmcart" method="post" action="?act=update" class="">
