@@ -1,6 +1,5 @@
 <?php
-if(isset($_GET['msg']))
-{
+if (isset($_GET['msg'])) {
   $msg = $_GET['msg'];
 }
 ?>
@@ -16,7 +15,7 @@ if(isset($_GET['msg']))
   <link rel="stylesheet" href="css/bootstrap.min.css" />
 
   <title>LOGIN</title>
-</head>  
+</head>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <body>
@@ -24,20 +23,14 @@ if(isset($_GET['msg']))
 
 
 
-  <div class="container-fluid">
-    <div class="row">
 
-
-    </div>
-  </div>
-  <div class="container">
+  <div class="container card">
     <?php
     if (isset($msg)) {
     ?>
 
       <script type="text/javascript">
-      
-        swal("","<?php echo $msg; ?> !!", "error");
+        swal("", "<?php echo $msg; ?> !!", "error");
       </script>
 
       <!-- <div class="text-center col-md-6 offset-md-3 ">
@@ -48,15 +41,15 @@ if(isset($_GET['msg']))
     <?php
     }
     ?>
-
+    <h1 class="text-md-center">LOGIN</h1>
     <form action="checklogin.php" method="POST">
       <div class="form-group">
-      <h6 class="text-white"><label for="exampleInputEmail1">Email address</label></h6>
+        <h6 class="text-white"><label for="exampleInputEmail1">Email address</label></h6>
         <input name="USERNAME" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
         <small id="emailHelp" class="form-text text-muted">ใส่เดี่ยว</small>
       </div>
       <div class="form-group">
-      <h6 class="text-white"><label for="exampleInputPassword1">Password</label></h6>
+        <h6 class="text-white"><label for="exampleInputPassword1">Password</label></h6>
         <input name="PASSWORD" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
       </div>
       <div class="form-check">
