@@ -50,7 +50,7 @@ if ($act == 'update') {
 
 <body>
 
-    <?php include_once (__DIR__) . ('/include/navbar.php');
+    <?php include_once (__DIR__) . ('/include/navbar2.php');
     ?>
     <div class="container card">
         <?php

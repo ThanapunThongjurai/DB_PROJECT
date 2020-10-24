@@ -23,7 +23,7 @@ if (!isset($_SESSION["user_status"]))
 
 
 <body>
-    <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
+    <?php include_once (__DIR__) . ('/include/navbar2.php'); ?>
     <form id="frmcart" name="frmcart" method="post" action="order_save.php">
         <table width="600" border="0" align="center" class="square">
             <tr>

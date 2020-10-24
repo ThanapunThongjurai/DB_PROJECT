@@ -4,6 +4,9 @@ if (!isset($_SESSION)) {
 }
 require_once('connect.php');
 ?>
+<?php 
+  $page     = basename($_SERVER['PHP_SELF'], ".php");
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -23,7 +26,7 @@ require_once('connect.php');
 <body>
 
 
-  <?php include_once (__DIR__) . ('/include/navbar.php');
+  <?php include_once (__DIR__) . ('/include/navbar2.php');
 
 
   $item_type = $conn->prepare("SELECT * FROM `item_type`");

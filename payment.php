@@ -21,7 +21,7 @@ require_once('connect.php');
 </head>
  
 <body>
-  <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
+  <?php include_once (__DIR__) . ('/include/navbar2.php'); ?>
   <?php
   $user =  $_SESSION["user_username"];
   $query = $conn->prepare("SELECT 

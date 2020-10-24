@@ -33,7 +33,7 @@ $user = $stmt->fetch();
 
 
 <body>
-    <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
+    <?php include_once (__DIR__) . ('/include/navbar2.php'); ?>
  
     <div class="container card ">
 <h1>ข้อมูล ของคุณ <?php echo $user['user_username']; ?></h1>
