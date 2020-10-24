@@ -33,9 +33,31 @@ while ($item_type_result = $item_type->fetch()) {
 <body>
 
 
-  <?php include_once (__DIR__) . ('/include/navbar2.php'); ?>
-  <div class="container">
-    <div class="row card">
+  <?php include_once (__DIR__) . ('/include/navbar2.php'); 
+  
+  $item_type = $conn->prepare("SELECT * FROM `item_type`");
+  $item_type->execute();
+  ?>
+  <div class="container-fluid">
+  <div class="row">
+  <div class="col-sm-2 col-md-2 sidebar">
+        <ul class="nav flex-column">
+          <?php
+          while ($item_type_result = $item_type->fetch()) {
+          ?>
+            <li class="nav-item card mt-2">
+            <a class="nav-link" href="index.php?type=<?php echo $item_type_result["item_type_id"]; ?>">
+                <svg width="24" height="24" viewBox="0 0 24 24" class="bi bi-handbag-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 1a2 2 0 0 0-2 2v2H5V3a3 3 0 0 1 6 0v2h-1V3a2 2 0 0 0-2-2zM5 5H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11v1.5a.5.5 0 0 1-1 0V5H6v1.5a.5.5 0 0 1-1 0V5z" />
+                </svg>
+                <?php echo $item_type_result["item_type_name"]; ?>
+            </a>
+            </li>
+          <?php } ?>
+        </ul>
+      </div>
+    <div class="container">
+    <div class="card">
       <?php
       $stmt = $conn->prepare("SELECT * FROM `item`");
       $stmt->execute();                               // run sql before
@@ -87,9 +109,9 @@ while ($item_type_result = $item_type->fetch()) {
           } ?>
         </table>
 
-
+          </div>
       </div>
-
+    </div>
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="js/jquery-3.5.1.slim.min.js"></script>
