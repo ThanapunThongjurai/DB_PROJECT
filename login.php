@@ -21,6 +21,7 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
     background-attachment: fixed;
   }
 </style>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <body>
   <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
@@ -35,14 +36,20 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
   </div>
   <div class="container">
     <?php
-    if ($msg == 'invalid') {
-      ?>
-      <div class="text-center col-md-6 offset-md-3 ">
+    if (isset($msg)) {
+    ?>
+
+      <script type="text/javascript">
+      
+        swal("","<?php echo $msg; ?> !!", "error");
+      </script>
+
+      <!-- <div class="text-center col-md-6 offset-md-3 ">
         <div class="alert alert-danger" role="alert">
           invalid
         </div>
-      </div>
-      <?php
+      </div> -->
+    <?php
     }
     ?>
 

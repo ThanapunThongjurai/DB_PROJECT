@@ -17,6 +17,7 @@ $email = $_POST['EMAIL'];
 $stmt = $conn->prepare("SELECT user_username,user_fullname FROM `user` WHERE user_username = '$user'");
 $stmt->execute();                               // run sql before
 
+
 $result = $stmt->fetch();
 if (($user != $result["user_username"]) && $user != "") {
 

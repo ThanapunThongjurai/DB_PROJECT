@@ -9,6 +9,11 @@ $act = isset($_REQUEST['act']) ? $_REQUEST['act'] : 'update';
 //$act = $_REQUEST['act'];
 //echo $id_item;
 //echo $act;
+
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+
 if ($act == 'add' && !empty($id_item)) {
     if (isset($_SESSION['cart'][$id_item])) {
         $_SESSION['cart'][$id_item]++;

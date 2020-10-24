@@ -9,18 +9,21 @@ $pass = $_POST['PASSWORD'];
 //echo "password: " .  $pass . "<br />";
 
 //$stmt = $conn->prepare("SELECT * FROM user"); // sql command
-$stmt = $conn->prepare("SELECT user_username,user_password,user_fullname,user_status FROM `user` WHERE user_username = '$user'");
+$stmt = $conn->prepare("SELECT user_username,user_password,user_fullname,user_status FROM `user` ");
 $stmt->execute();                               // run sql before
 
-$result = $stmt->fetch();
+// // $result = $stmt->fetch();
 
-//$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-/*  
-while($result = $stmt->fetch()) {
-    echo "ชื่อ-นามสกุล :: " . $result["user_fullname"] ."<br />";
-    
-  }
-*/
+// //$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+// while ($result = $stmt->fetch()) {
+//     echo "ชื่อ-นามสกุล :: " . $result["user_fullname"] . "<br />";
+//     echo '<pre>';
+//     print_r($result);
+//     echo '</pre>';
+// }
+
+
 
 
 
@@ -31,8 +34,8 @@ if (($user == $result["user_username"]) && ($pass == $result["user_password"]) &
     $_SESSION["user_fullname"] = $result['user_fullname'];
     $_SESSION["user_status"] = $result['user_status'];
     //ไม่ทำ password เพราะมันไม่ปลอดภัย
-    header("Location: index.php");
+    //header("Location: index.php");
 } else {
     //echo "ผิด";
-    header("Location: login.php?msg=invalid");
+    //header("Location: login.php?msg=ไม่มีuserนี้ในระบบหรือว่ารหัสไม่ถูกต้อง");
 }
