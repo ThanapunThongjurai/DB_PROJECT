@@ -89,7 +89,11 @@ if ($act == 'update') {
                         $sum = $row['item_price'] * $qty;
                         $total += $sum;
                         echo "<tr>";
-                        echo "<td width='334'>" . $row["item_name"] . "</td>";
+                        ?> <td width="334">
+                             <img style="width: 60px; height: 60px;" src="image/item/<?php echo $row["imagelocation"] ?>" class="card-img-top img-thumbnail" alt="Card image cap">
+                            
+                            <?php echo $row["item_name"] ?>.</td><?php 
+                        //echo "<td width='334'>" . $row["item_name"] . "</td>";
                         echo "<td width='46' align='right'>" . number_format($row["item_price"], 2) . "</td>";
                         echo "<td width='57' align='right'>";
                         echo "<input type='text' name='amount[$id_item]' value='$qty' size='2'/></td>";
@@ -116,7 +120,7 @@ if ($act == 'update') {
         </form>
         <?php
         echo '<pre>';
-        print_r($_SESSION['cart']);
+        print_r($_SESSION);
         echo '</pre>'; ?>
         <script src="js/jquery-3.5.1.slim.min.js"></script>
         <script src="js/popper.min.js"></script>
