@@ -51,17 +51,17 @@ if(isset($_GET['msg']))
 
     <form action="checklogin.php" method="POST">
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+      <h6 class="text-white"><label for="exampleInputEmail1">Email address</label></h6>
         <input name="USERNAME" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
         <small id="emailHelp" class="form-text text-muted">ใส่เดี่ยว</small>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
+      <h6 class="text-white"><label for="exampleInputPassword1">Password</label></h6>
         <input name="PASSWORD" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
       </div>
       <div class="form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">อยู่ในระบบตลอดกาล</label>
+        <h6 class="text-white"><label class="form-check-label" for="exampleCheck1">อยู่ในระบบตลอดกาล</label></h6>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
