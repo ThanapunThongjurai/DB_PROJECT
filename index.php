@@ -76,13 +76,16 @@ require_once('connect.php');
                   <!--img src="images/gallery/<?php echo $result; ?>.jpg"-->
                   <img style="width: 350px; height: 300px;" src="image/item/<?php echo $result["imagelocation"] ?>" class="card-img-top img-thumbnail" alt="Card image cap">
                   <div class="card-body">
-                    <h5 class="card-title"><?php echo $result["item_name"] ?></h5>
+                    <h4 class="card-title"><span class="d-block p-2 bg-dark text-white"><?php echo $result["item_name"] ?></span></h4>
                     <p class="text-left"><?php echo $result["item_preview"]; ?></p>
-                    <h5 class="text-right"><?php echo $result["item_price"]." บาท"; ?></h5>
+                    <h5 class="text-right">
+                    
+                    <p class="text-primary"><?php echo $result["item_price"]." บาท"; ?></p>
+
+
+                    </h5>
                   </div>
-                  <a class="btn btn-primary" href="item_detail.php?id_item=<?php echo $result['id_item']; ?>" role="button">
-                    <h5>สนใจกดเลยราคาอยู่ข้างใน</h5>
-                  </a>
+                  <center><a href="item_detail.php?id_item=<?php echo $result['id_item']; ?>""><button type="button" class="btn btn-outline-dark"><h4>สนใจกดเลยราคาอยู่ข้างใน</h4></button></a></center>
                 </div>
               </div>
             </div><?php

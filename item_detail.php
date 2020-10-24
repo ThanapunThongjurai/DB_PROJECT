@@ -39,11 +39,23 @@ while ($item_type_result = $item_type->fetch()) {
         <div class="row">
             <div class="col-sm-4">
                 <img src="image/item/<?php echo $id_item["imagelocation"] ?>" class="card-img-top" alt="...">
-                <button type="button" class="btn btn-primary">
+                <!-- <button type="button" class="btn btn-primary"> -->
 
-                    <a class="btn btn-primary" href="cart.php?id_item=<?php echo $id_item['id_item']; ?>&act=add" role="button">
-                        <h1>หยิบลงตะกร้า</h1>
+                    <?php  
+                    if ($id_item["item_amount"] <= 0){
+                    ?>
+                        <button type="button" class="btn btn-outline-danger"><h4>สินค้าหมด</h4></button>
+                    <?php
+                    }
+                    else {
+                    ?>
+                        <a class="btn btn-primary" href="cart.php?id_item=<?php echo $id_item['id_item']; ?>&act=add" role="button">
+                        <h4>หยิบลงตะกร้า</h4>
                     </a>
+                    <?php
+                    }
+                    ?>
+
                 </button>
             </div>
 
@@ -62,7 +74,18 @@ while ($item_type_result = $item_type->fetch()) {
 
                     ?>
                 </p>
-                <p class="">คลัง : <?php echo $id_item["item_amount"] ?></p>
+                <?php  
+                 if ($id_item["item_amount"] <= 0){
+                 ?>
+                    <p class="">คลัง : สินค้าหมด</p>
+                 <?php
+                 }
+                 else{
+                 ?>
+                    <p class="">คลัง : <?php echo $id_item["item_amount"] ?></p>
+                 <?php
+                 }
+                 ?>
                 <p class="">คำอธิบาย : <?php echo $id_item["item_disc"] ?></p>
             </div>
         </div>
