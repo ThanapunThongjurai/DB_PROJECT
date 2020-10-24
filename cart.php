@@ -53,10 +53,12 @@ if ($act == 'update') {
     <?php include_once (__DIR__) . ('/include/navbar2.php');
     ?>
     <div class="container card">
+
         <?php
-        echo '<pre>';
-        print_r($_SESSION['cart']);
-        echo '</pre>'; ?>
+        // echo '<pre>';
+        // print_r($_SESSION['cart']);
+        // echo '</pre>'; ?>
+        
         <h1 class="text-md-center">ตะกร้าสินค้า</h1>
         <form id="frmcart" name="frmcart" method="post" action="?act=update" class="">
             <table width="600" border="0" align="center" class="square">
