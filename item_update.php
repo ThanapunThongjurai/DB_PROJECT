@@ -3,15 +3,17 @@ session_start();
 require_once('connect.php');
 if ($_SESSION["user_status"] == 0) //0 is normal 
 {
-  header("Location: login.php");
+    header("Location: login.php");
 }
-$msg = isset($_GET['msg']) ? $_GET['msg'] : '';
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+}
 
 $item_update_id = $_GET["id_item"];
 
 $stmt = $conn->prepare("SELECT * FROM `item` WHERE `id_item` = '$item_update_id';");
 $stmt->execute();
-$item_data= $stmt->fetch();
+$item_data = $stmt->fetch();
 ?>
 
 
@@ -27,44 +29,39 @@ $item_data= $stmt->fetch();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-    <title>Hello, world!</title>
+    <title>ITEM UPDATE</title>
 </head>
 
 
 <body>
-    <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
-
-
-
-    <div class="container-fluid">
-        <div class="row">
-
-
-        </div>
-    </div>
-    <div class="container">
-
-<!--
+    <?php include_once (__DIR__) . ('/include/navbar.php'); ?>  
+    <div class="container card ">
+        <h1 class="text-md-center">ITEM INSERT</h1>
+        <!--
       <?php
-      if($item_update_id != 0)
-      {?>
+        if ($item_update_id != 0) { ?>
         <div class="text-center col-md-6 offset-md-3 ">
             <div class="alert alert-danger" role="alert">
               //<?php echo $item_update_id ?>
             </div>
         </div>
           <?php
-      }
-      ?>
+        }
+            ?>
 -->
-<?php
-        if ($msg == 'invalid') {
+        <?php
+        if (isset($msg)) {
         ?>
-            <div class="text-center col-md-6 offset-md-3 ">
-                <div class="alert alert-danger" role="alert">
-                    invalid
-                </div>
-            </div>
+
+            <script type="text/javascript">
+                swal("", "<?php echo $msg; ?> !!", "error");
+            </script>
+
+            <!-- <div class="text-center col-md-6 offset-md-3 ">
+        <div class="alert alert-danger" role="alert">
+          invalid
+        </div>
+      </div> -->
         <?php
         }
         ?>
@@ -73,7 +70,7 @@ $item_data= $stmt->fetch();
 
             <div class="form-group">
                 <label for="exampleInputEmail1">item_name</label>
-                <input  name="item_name" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_name']; ?>">
+                <input name="item_name" class="form-control" aria-describedby="emailHelp" value="<?php echo $item_data['item_name']; ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">item_price</label>
@@ -113,12 +110,12 @@ $item_data= $stmt->fetch();
             </div>
 
             <!-- เพิ่มีูป -->
-          
-                Select image to upload:
-                <input type="file" name="fileToUpload" id="fileToUpload">
 
-            
-            
+            Select image to upload:
+            <input type="file" name="fileToUpload" id="fileToUpload">
+
+
+
             <button type="submit" class="btn btn-primary" name="submit">Submit</button>
         </form>
     </div>

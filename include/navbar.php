@@ -127,3 +127,5 @@ if (!isset($_SESSION)) {
     background-repeat:initial;
   }
 </style>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

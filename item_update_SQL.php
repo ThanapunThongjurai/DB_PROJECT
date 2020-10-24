@@ -81,7 +81,7 @@ if ($item_name != "") {
     header("Location: admin.php");
 } else {
     echo "ผิด";
-    header("Location: item_update.php?msg=invalid");
+    header("Location: item_update.php?msg=ชื่ออย่าซ้ำสิโว้ยยยยยยย");
 }
 //$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 /*  
