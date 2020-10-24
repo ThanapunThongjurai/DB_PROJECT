@@ -54,10 +54,7 @@ if ($act == 'update') {
     ?>
     <div class="container card">
 
-        <?php
-        echo '<pre>';
-        print_r($_SESSION['cart']);
-        echo '</pre>'; ?>
+        
         
         <h1 class="text-md-center">ตะกร้าสินค้า</h1>
         <form id="frmcart" name="frmcart" method="post" action="?act=update" class="">
@@ -117,6 +114,10 @@ if ($act == 'update') {
                 </tr>
             </table>
         </form>
+        <?php
+        echo '<pre>';
+        print_r($_SESSION['cart']);
+        echo '</pre>'; ?>
         <script src="js/jquery-3.5.1.slim.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>

@@ -4,8 +4,8 @@ if (!isset($_SESSION)) {
 }
 require_once('connect.php');
 ?>
-<?php 
-  $page     = basename($_SERVER['PHP_SELF'], ".php");
+<?php
+$page     = basename($_SERVER['PHP_SELF'], ".php");
 ?>
 <!DOCTYPE html>
 
@@ -21,7 +21,7 @@ require_once('connect.php');
   <link rel="stylesheet" href="css/bootstrap.min.css" />
 
   <title>suberSHOP</title>
-</head> 
+</head>
 
 <body>
 
@@ -41,12 +41,12 @@ require_once('connect.php');
           while ($item_type_result = $item_type->fetch()) {
           ?>
             <li class="nav-item card mt-2">
-            <a class="nav-link" href="index.php?type=<?php echo $item_type_result["item_type_id"]; ?>">
+              <a class="nav-link" href="index.php?type=<?php echo $item_type_result["item_type_id"]; ?>">
                 <svg width="24" height="24" viewBox="0 0 24 24" class="bi bi-handbag-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M8 1a2 2 0 0 0-2 2v2H5V3a3 3 0 0 1 6 0v2h-1V3a2 2 0 0 0-2-2zM5 5H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11v1.5a.5.5 0 0 1-1 0V5H6v1.5a.5.5 0 0 1-1 0V5z" />
                 </svg>
                 <?php echo $item_type_result["item_type_name"]; ?>
-            </a>
+              </a>
             </li>
           <?php } ?>
         </ul>
@@ -56,18 +56,26 @@ require_once('connect.php');
           <?php
           if (isset($_GET["type"])) {
             $item_type_get = $_GET["type"];
-          }
-          else
-          {
+          } else {
             $item_type_get = "";
           }
 
-          if ($item_type_get == "") {
-            $stmt = $conn->prepare("SELECT * FROM `item`");
-          } else {
 
-            $stmt = $conn->prepare("SELECT * FROM `item` WHERE item_type = '$item_type_get'");
+          if (isset($_GET["search"])) {
+            echo $search = $_GET["search"];
+            $stmt = $conn->prepare("SELECT * FROM `item` WHERE item_name LIKE '%$search%'");
+          } else {
+            if ($item_type_get == "") {
+              $stmt = $conn->prepare("SELECT * FROM `item`");
+            } else {
+
+              $stmt = $conn->prepare("SELECT * FROM `item` WHERE item_type = '$item_type_get'");
+            }
           }
+
+
+
+
           //$stmt = $conn->prepare("SELECT * FROM `item`");
           $stmt->execute();                               // run sql before
           while ($result = $stmt->fetch()) {
@@ -81,13 +89,15 @@ require_once('connect.php');
                     <h4 class="card-title"><span class="d-block p-2 bg-dark text-white"><?php echo $result["item_name"] ?></span></h4>
                     <p class="text-left"><?php echo $result["item_preview"]; ?></p>
                     <h5 class="text-right">
-                    
-                    <p class="text-primary"><?php echo $result["item_price"]." บาท"; ?></p>
+
+                      <p class="text-primary"><?php echo $result["item_price"] . " บาท"; ?></p>
 
 
                     </h5>
                   </div>
-                  <center><a href="item_detail.php?id_item=<?php echo $result['id_item']; ?>"><button type="button" class="btn btn-outline-dark"><h4>สนใจกดเลยราคาอยู่ข้างใน</h4></button></a></center>
+                  <center><a href="item_detail.php?id_item=<?php echo $result['id_item']; ?>"><button type="button" class="btn btn-outline-dark">
+                        <h4>สนใจกดเลยราคาอยู่ข้างใน</h4>
+                      </button></a></center>
                 </div>
               </div>
             </div><?php
