@@ -1,5 +1,5 @@
 <?php
- $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
+$msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,22 +35,20 @@
     </div>
     <div class="container">
         <?php
-        if ($msg == "invalid") {
+        if (isset($msg)) {
         ?>
-            <div class="text-center col-md-6 offset-md-3 ">
-                <div class="alert alert-danger" role="alert">
-                    invalid
-                </div>
-            </div>
+            <script type="text/javascript">
+                swal("", "<?php echo $msg; ?> !!", "error");
+            </script> 
         <?php
         }
         ?>
 
         <form action="checkregister.php" method="POST">
-            
+
             <div class="form-group">
                 <label for="exampleInputEmail1">username</label>
-                <input name="USERNAME" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                <input name="USERNAME" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 <small id="emailHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
@@ -64,17 +62,17 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Fullname</label>
-                <input name="FULLNAME" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                <input name="FULLNAME" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 <small id="emailHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">ADDRESS</label>
-                <input name="ADDRESS" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                <input name="ADDRESS" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 <small id="emailHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">เบอร์โทร</label>
-                <input name="TEL" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                <input name="TEL" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 <small id="emailHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-check">

@@ -32,7 +32,7 @@ if (($user != $result["user_username"]) && $user != "") {
     header("Location: index.php");
 } else {
     //echo "ผิด";
-    header("Location: register.php?msg=invalid");
+    header("Location: register.php?msg=ชื่อusernameซ้ำนะคิดใหม่มาสะ");
 }
 //$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 /*  

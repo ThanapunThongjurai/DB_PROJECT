@@ -10,9 +10,6 @@ $act = isset($_REQUEST['act']) ? $_REQUEST['act'] : 'update';
 //echo $id_item;
 //echo $act;
 
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
 
 if ($act == 'add' && !empty($id_item)) {
     if (isset($_SESSION['cart'][$id_item])) {
@@ -20,11 +17,6 @@ if ($act == 'add' && !empty($id_item)) {
     } else {
         $_SESSION['cart'][$id_item] = 1;
     }
-
-
-    
-
-    
 }
 
 if ($act == 'remove' && !empty($id_item))  //ยกเลิกการสั่งซื้อ
@@ -55,14 +47,24 @@ if ($act == 'update') {
     <title>Shopping Cart</title>
 </head>
 <style tpye="text/css">
-  body {
-    background-image: url('image/wall.jpg');
-    -webkit-background-size: cover;
-    background-attachment: fixed;
-  }
+    body {
+        background-image: url('image/wall.jpg');
+        -webkit-background-size: cover;
+        background-attachment: fixed;
+    }
 </style>
+
 <body>
-    <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
+    <?php include_once (__DIR__) . ('/include/navbar.php');
+
+
+    echo '<pre>';
+    print_r($_SESSION['cart']);
+    echo '</pre>';
+
+
+
+    ?>
     <form id="frmcart" name="frmcart" method="post" action="?act=update">
         <table width="600" border="0" align="center" class="square">
             <tr>
@@ -160,8 +162,8 @@ if ($act == 'update') {
                 </tbody>
             </table>
         <?php
-        
-        
+
+
 
         }
         ?>
