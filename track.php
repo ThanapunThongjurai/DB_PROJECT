@@ -22,7 +22,7 @@ if ($_SESSION["user_status"] == 0) //0 is normal
 
 
 <body>
-    <?php include_once (__DIR__) . ('/include/navbar.php');
+    <?php include_once (__DIR__) . ('/include/navbar2.php');
     $user =  $_SESSION["user_username"];
     $query = $conn->prepare("SELECT 
                             orders.order_id, 

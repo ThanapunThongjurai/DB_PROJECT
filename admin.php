@@ -33,7 +33,7 @@ while ($item_type_result = $item_type->fetch()) {
 <body>
 
 
-  <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
+  <?php include_once (__DIR__) . ('/include/navbar2.php'); ?>
   <div class="container">
     <div class="row card">
       <?php
