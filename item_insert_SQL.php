@@ -76,7 +76,7 @@ if (($item_name != $result["item_name"]) && $item_name != "") {
     //header("Location: admin.php");
 } else {
     echo "ผิด";
-    //header("Location: item_insert.php?msg=invalid");
+    header("Location: item_insert.php?msg=ข้อมูลผิด ชื่อซ้ำมั้งนะ");
 }
 //$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 /*  

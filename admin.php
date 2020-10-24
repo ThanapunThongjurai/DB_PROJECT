@@ -27,7 +27,7 @@ while ($item_type_result = $item_type->fetch()) {
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-  <title>Hello, world!</title>
+  <title>ADMIN</title>
 </head>
 
 <body>
@@ -41,8 +41,9 @@ while ($item_type_result = $item_type->fetch()) {
       $stmt->execute();                               // run sql before
       ?>
       <div class="">
+      <h1 class="text-md-center">ADMIN CONTROL</h1>
         <table class="table">
-          <a type="button" class="btn btn-outline-success btn-lg" href="item_insert.php">item_insert</a>
+          <a type="button" class="btn btn-outline-success btn-lg mb-3 card ml-3" href="item_insert.php">item_insert</a>
           <thead class="thead-dark">
             <tr>
               <th scope="col">item_id</th>

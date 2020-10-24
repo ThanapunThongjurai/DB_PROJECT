@@ -15,15 +15,8 @@ if(isset($_GET['msg']))
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-  <title>Hello, world!</title>
-</head>
-<style tpye="text/css">
-  body {
-    background-image: url('image/wall.jpg');
-    -webkit-background-size: cover;
-    background-attachment: fixed;
-  }
-</style>
+  <title>LOGIN</title>
+</head>  
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <body>

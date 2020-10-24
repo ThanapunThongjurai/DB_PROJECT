@@ -5,7 +5,9 @@ if ($_SESSION["user_status"] == 0) //0 is normal
 {
     header("Location: login.php");
 }
-$msg = isset($_GET['msg']) ? $_GET['msg'] : '';
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +22,7 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 
     <title>Hello, world!</title>
 </head>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <body>
     <?php include_once (__DIR__) . ('/include/navbar.php'); ?>
@@ -33,15 +35,21 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 
         </div>
     </div>
-    <div class="container">
+    <div class="container card ">
+        <h1 class="text-md-center">ITEM INSERT</h1>
         <?php
-        if ($msg == 'invalid') {
+        if (isset($msg)) {
         ?>
-            <div class="text-center col-md-6 offset-md-3 ">
-                <div class="alert alert-danger" role="alert">
-                    invalid
-                </div>
-            </div>
+
+            <script type="text/javascript">
+                swal("", "<?php echo $msg; ?> !!", "error");
+            </script>
+
+            <!-- <div class="text-center col-md-6 offset-md-3 ">
+        <div class="alert alert-danger" role="alert">
+          invalid
+        </div>
+      </div> -->
         <?php
         }
         ?>
