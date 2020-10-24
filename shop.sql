@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2020 at 09:24 AM
+-- Generation Time: Oct 24, 2020 at 07:49 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -43,12 +43,12 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`id_item`, `item_name`, `item_price`, `item_type`, `item_disc`, `item_preview`, `item_amount`, `imagelocation`) VALUES
-(3, '3', 4, 2, '4', '3', 0, '3.png'),
-(7, '7', 7, 7, '7', '7', 0, '7.png'),
-(8, '8', 8, 8, '8', '8', 5, '8.png'),
-(9, '9', 9, 9, '9', '9', 4, '9.png'),
-(46, '20', 20, 20, '20', '20', 20, ''),
-(47, '30', 0, 0, '', '', 0, '121497093_806889730066179_8888255025633634221_n.jpg');
+(3, '3', 4, 5, '4', '3', 0, '3.png'),
+(7, '7', 7, 5, '7', '7', 0, '7.png'),
+(8, '8', 8, 5, '8', '8', 5, '8.png'),
+(9, '9', 9, 5, '9', '9', 4, '9.png'),
+(46, '20', 20, 5, '20', '20', 20, ''),
+(47, '30', 0, 2, '', '', 0, '121497093_806889730066179_8888255025633634221_n.jpg');
 
 -- --------------------------------------------------------
 
@@ -70,7 +70,8 @@ INSERT INTO `item_type` (`item_type_id`, `item_type_name`) VALUES
 (2, 'กางเกง'),
 (3, 'ร้องเท้า'),
 (4, 'กระเป๋า'),
-(5, 'อื่นๆ');
+(5, 'อื่นๆ'),
+(6, 'เกม');
 
 -- --------------------------------------------------------
 
@@ -80,7 +81,7 @@ INSERT INTO `item_type` (`item_type_id`, `item_type_name`) VALUES
 
 CREATE TABLE `orders` (
   `order_id` int(10) NOT NULL COMMENT 'เลขorder',
-  `order_username` int(10) NOT NULL COMMENT 'username คนซื้อ',
+  `order_username` varchar(16) NOT NULL COMMENT 'username คนซื้อ',
   `pay_id` int(10) NOT NULL COMMENT 'เลขรหัสการจ่ายเงิน',
   `track_id` int(10) NOT NULL COMMENT 'เลขติดตามพัสดุ',
   `order_date` datetime NOT NULL COMMENT 'วันที่ทำการสั่งซื้อ'
@@ -91,11 +92,12 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `order_username`, `pay_id`, `track_id`, `order_date`) VALUES
-(48, 0, 61, 49, '2020-10-20 21:14:24'),
-(47, 0, 60, 48, '2020-10-18 22:48:28'),
-(46, 0, 59, 47, '2020-10-18 16:15:23'),
-(45, 0, 58, 46, '2020-10-18 15:58:28'),
-(44, 0, 57, 45, '2020-10-18 14:39:38');
+(49, '0', 62, 50, '2020-10-23 19:25:13'),
+(48, '0', 61, 49, '2020-10-20 21:14:24'),
+(47, '0', 60, 48, '2020-10-18 22:48:28'),
+(46, '0', 59, 47, '2020-10-18 16:15:23'),
+(45, '0', 58, 46, '2020-10-18 15:58:28'),
+(44, '0', 57, 45, '2020-10-18 14:39:38');
 
 -- --------------------------------------------------------
 
@@ -104,7 +106,7 @@ INSERT INTO `orders` (`order_id`, `order_username`, `pay_id`, `track_id`, `order
 --
 
 CREATE TABLE `orders_no` (
-  `orders_no` int(10) NOT NULL COMMENT 'runไว้เป็น pimary เฉยๆ',
+  `orders_no` int(10) NOT NULL COMMENT 'เก็บ order id',
   `order_no_id` int(10) NOT NULL COMMENT 'เอาไว้เก็บ order ที่สั่ง',
   `order_no_item` int(10) NOT NULL COMMENT 'item ที่สั่ง',
   `order_no_amount` int(10) NOT NULL COMMENT 'จำนวนที่สั่ง'
@@ -135,7 +137,8 @@ INSERT INTO `orders_no` (`orders_no`, `order_no_id`, `order_no_item`, `order_no_
 (33, 45, 8, 1),
 (34, 46, 9, 1),
 (35, 47, 12, 2),
-(36, 48, 8, 1);
+(36, 48, 8, 1),
+(37, 49, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -145,11 +148,11 @@ INSERT INTO `orders_no` (`orders_no`, `order_no_id`, `order_no_item`, `order_no_
 
 CREATE TABLE `payment` (
   `pay_id` int(4) NOT NULL,
-  `pay_username` int(4) NOT NULL COMMENT 'คนจ่ายเงิน',
-  `pay_status` enum('wait','check','pay','cancel') NOT NULL,
-  `pay_price` int(10) DEFAULT NULL,
-  `pay_time` datetime(6) DEFAULT NULL,
-  `pay_imagelocation` text DEFAULT NULL
+  `pay_username` varchar(16) NOT NULL COMMENT 'คนจ่ายเงิน',
+  `pay_status` enum('wait','check','pay','cancel') NOT NULL COMMENT 'สถานะการชำระ',
+  `pay_price` int(10) DEFAULT NULL COMMENT 'จำนวนที่ต้องจ่าย',
+  `pay_time` datetime(6) DEFAULT NULL COMMENT 'เก็บเวลาที่ upload หลักฐาน',
+  `pay_imagelocation` text DEFAULT NULL COMMENT 'ที่เก็บหลักฐาน'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
@@ -157,11 +160,12 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`pay_id`, `pay_username`, `pay_status`, `pay_price`, `pay_time`, `pay_imagelocation`) VALUES
-(61, 0, 'pay', 8, '2020-10-29 21:18:00.000000', '121588820_5187923337899801_8389119168624097045_o.png'),
-(57, 0, 'pay', 8, '2020-10-19 17:39:00.000000', '3.png'),
-(58, 0, 'pay', 8, '2020-10-19 16:48:00.000000', '7.png'),
-(59, 0, 'pay', 9, '2020-10-08 16:50:00.000000', 'Screenshot 2020-10-10 144329.png'),
-(60, 0, 'pay', 24, '2020-10-19 22:52:00.000000', 'red.png');
+(62, '0', 'wait', 0, NULL, NULL),
+(61, '0', 'pay', 8, '2020-10-29 21:18:00.000000', '121588820_5187923337899801_8389119168624097045_o.png'),
+(57, '0', 'pay', 8, '2020-10-19 17:39:00.000000', '3.png'),
+(58, '0', 'pay', 8, '2020-10-19 16:48:00.000000', '7.png'),
+(59, '0', 'pay', 9, '2020-10-08 16:50:00.000000', 'Screenshot 2020-10-10 144329.png'),
+(60, '0', 'pay', 24, '2020-10-19 22:52:00.000000', 'red.png');
 
 -- --------------------------------------------------------
 
@@ -170,11 +174,11 @@ INSERT INTO `payment` (`pay_id`, `pay_username`, `pay_status`, `pay_price`, `pay
 --
 
 CREATE TABLE `track` (
-  `track_id` int(4) NOT NULL,
-  `track_username` int(4) NOT NULL,
-  `track_owner` text DEFAULT NULL,
-  `track_no` varchar(20) DEFAULT NULL,
-  `track_status` enum('wait','send','cancel') NOT NULL
+  `track_id` int(4) NOT NULL COMMENT 'idของเลขtraco',
+  `track_username` varchar(16) NOT NULL COMMENT 'username ที่สั่งซื้อ',
+  `track_owner` text DEFAULT NULL COMMENT 'บริษัทขนส่ง',
+  `track_no` varchar(20) DEFAULT NULL COMMENT 'หมายเลข track',
+  `track_status` enum('wait','send','cancel') NOT NULL COMMENT 'สถานะการจัดส่ง'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
@@ -182,11 +186,12 @@ CREATE TABLE `track` (
 --
 
 INSERT INTO `track` (`track_id`, `track_username`, `track_owner`, `track_no`, `track_status`) VALUES
-(45, 0, 'FLASH', '123456', 'send'),
-(46, 0, 'KERRY', '12', 'send'),
-(47, 0, 'KERRY', '1234', 'send'),
-(48, 0, 'EMS', '123', 'send'),
-(49, 0, NULL, NULL, 'wait');
+(45, '0', 'FLASH', '123456', 'send'),
+(46, '0', 'KERRY', '12', 'send'),
+(47, '0', 'KERRY', '1234', 'send'),
+(48, '0', 'EMS', '123', 'send'),
+(49, '0', NULL, NULL, 'wait'),
+(50, '0', NULL, NULL, 'wait');
 
 -- --------------------------------------------------------
 
@@ -195,8 +200,8 @@ INSERT INTO `track` (`track_id`, `track_username`, `track_owner`, `track_no`, `t
 --
 
 CREATE TABLE `track_owner_id` (
-  `track_owner_id` int(2) NOT NULL,
-  `track_owner_name` varchar(32) NOT NULL
+  `track_owner_id` int(2) NOT NULL COMMENT 'เลขชื่อ บ ขนส่ง',
+  `track_owner_name` varchar(32) NOT NULL COMMENT 'ชื่อ บ ขนส่ง'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
@@ -234,7 +239,8 @@ INSERT INTO `user` (`user_username`, `user_password`, `user_fullname`, `user_add
 ('root3', 'root3', 'root3', '0', '', '0', '0'),
 ('123', '123', '123', '123', '123@gmail.com', '123', '0'),
 ('12345', '12345', '12345', '12345', '12345@gmail.com', '1234569780', '0'),
-('admin', 'admin', 'admin', 'admin', 'admin', 'admin', '1');
+('admin', 'admin', 'admin', 'admin', 'admin', 'admin', '1'),
+('namelesskingmeow', '00110011', 'Thanapun Thongjurai', 'บ้านโคกใหญ่', 'namelesskingmeow@gmail.com', '0942860030', '0');
 
 --
 -- Indexes for dumped tables
@@ -302,37 +308,37 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `item_type`
 --
 ALTER TABLE `item_type`
-  MODIFY `item_type_id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'หมายเลข', AUTO_INCREMENT=6;
+  MODIFY `item_type_id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'หมายเลข', AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'เลขorder', AUTO_INCREMENT=49;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'เลขorder', AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `orders_no`
 --
 ALTER TABLE `orders_no`
-  MODIFY `orders_no` int(10) NOT NULL AUTO_INCREMENT COMMENT 'runไว้เป็น pimary เฉยๆ', AUTO_INCREMENT=37;
+  MODIFY `orders_no` int(10) NOT NULL AUTO_INCREMENT COMMENT 'เก็บ order id', AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `pay_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `pay_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `track`
 --
 ALTER TABLE `track`
-  MODIFY `track_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `track_id` int(4) NOT NULL AUTO_INCREMENT COMMENT 'idของเลขtraco', AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `track_owner_id`
 --
 ALTER TABLE `track_owner_id`
-  MODIFY `track_owner_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `track_owner_id` int(2) NOT NULL AUTO_INCREMENT COMMENT 'เลขชื่อ บ ขนส่ง', AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
