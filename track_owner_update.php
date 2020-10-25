@@ -9,7 +9,7 @@ if (isset($_GET['msg'])) {
   $msg = $_GET['msg'];
 }
 
- 
+
 ?>
 
 
@@ -60,20 +60,21 @@ if (isset($_GET['msg'])) {
       </div> -->
     <?php
 
-    $track_owner_id = $_GET["track_owner_id"];
-
+      
     }
+    $track_owner_id = $_GET["track_owner_id"];
     ?>
 
-    <form action="track_owner_update_SQL.php" method="POST">
-
-      
+    <form action="track_owner_update_SQL.php?track_owner_id=<?php echo $track_owner_id; ?>" method="POST">
       <label for="exampleInputEmail1">track_owner_id</label>
-      <input name="track_owner_id" class="form-control" aria-describedby="emailHelp" value="<?php echo $_GET["track_owner_id"]; ?>" disabled>
+      <input name="track_owner_id" class="form-control" aria-describedby="emailHelp" value="<?php echo $track_owner_id ; ?>" disabled>
       <label for="exampleInputEmail1">track_owner_name</label>
       <input name="track_owner_name" class="form-control" aria-describedby="emailHelp">
 
+
+
       <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+    </form>
     </form>
   </div>
 
