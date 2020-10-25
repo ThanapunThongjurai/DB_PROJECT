@@ -67,6 +67,7 @@ if (!isset($_SESSION)) {
           <a class="dropdown-item" href="login.php">Login</a>
           <a class="dropdown-item" href="register.php">Register</a>
       </li>
+    </ul>
     <?php }
     ?>
 

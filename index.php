@@ -86,7 +86,7 @@ $page     = basename($_SERVER['PHP_SELF'], ".php");
                   <!--img src="images/gallery/<?php echo $result; ?>.jpg"-->
                   <img style="width: 350px; height: 300px;" src="image/item/<?php echo $result["imagelocation"] ?>" class="card-img-top img-thumbnail" alt="Card image cap">
                   <div class="card-body">
-                    <h4 class="card-title"><span class="d-block p-2 bg-dark text-white"><?php echo $result["item_name"] ?></span></h4>
+                    <h6 class="card-title"><span class="d-block p-2 bg-dark text-white"><?php echo $result["item_name"] ?></span></h6>
                     <p class="text-left"><?php echo $result["item_preview"]; ?></p>
                     <h5 class="text-right">
 
