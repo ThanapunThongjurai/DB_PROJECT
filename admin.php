@@ -74,8 +74,12 @@ while ($item_type_result = $item_type->fetch()) {
               </svg>
               user
             </a>
-          </li>
+          </li> 
 
+
+
+
+          
         </ul>
       </div>
       <div class="container">
@@ -232,7 +236,7 @@ while ($item_type_result = $item_type->fetch()) {
                         <td>
 
                         </td>
-                        <td><a type="button" class="btn btn-outline-secondary" href="user_owner_update.php?id_item=<?php echo $result["user_username"]; ?>">UPDATE</a></td>
+                        <td><a type="button" class="btn btn-outline-secondary" href="user_update.php?id_item=<?php echo $result["user_username"]; ?>">UPDATE</a></td>
                         <td><a type="button" class="btn btn-outline-danger" href="user_delete.php?id_item=<?php echo $result["user_username"]; ?>">DELETE</a></td>
                       </tr>
                     </tbody>
@@ -243,7 +247,6 @@ while ($item_type_result = $item_type->fetch()) {
             <?php
               }
             }
-
             ?>
 
 

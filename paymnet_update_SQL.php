@@ -81,4 +81,4 @@ if ($itemlocation != "") {
     `pay_imagelocation`='$itemlocation' WHERE pay_id = '$pay_id'");
   $insert_payment_image->execute();
 }
-header("Location: payment.php");
+header("Location: order_user.php");
