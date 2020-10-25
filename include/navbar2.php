@@ -39,7 +39,7 @@ if (!isset($_SESSION)) {
           <a class="nav-link" href="user_data.php">username : <?php echo $_SESSION["user_fullname"]; ?> แก้ไขเปลี่ยนแปลงข้อมูลผู้ใช้</a>
           <?php
           if ($_SESSION["user_status"] == 1) { ?>
-            <a class="nav-link" href="user_data.php">แก้ไขเปลี่ยนแปลงข้อมูลผู้ใช้</a>
+            <!-- <a class="nav-link" href="user_data.php">แก้ไขเปลี่ยนแปลงข้อมูลผู้ใช้</a> -->
             <a class="nav-link" href="admin.php">Admin : ITEM add remove update </a>
             <a class="nav-link" href="payment_check.php">Admin : ตรวจสอบแจ้งชำระ</a>
             <a class="nav-link" href="order.php">Admin : ordersของลูกค้า</a>
