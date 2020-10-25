@@ -61,7 +61,7 @@ if ($_SESSION["user_status"] == 0) //0 is normal
                         ?>
                             <tr>
                                 <th><a href="order_detail.php?order_id=<?php echo $order_id; ?>">#<?php echo $order_id; ?></a></th>
-                                <td><?php echo $result["pay_time"]; ?><p>ราคา : <?php echo $result["pay_price"]; ?></p>
+                                <td><?php echo substr($result["pay_time"],0,16); ?><p>ราคา : <?php echo $result["pay_price"]; ?></p>
                                 </td>
                                 <td><a href="image/payment/<?php echo $result["pay_imagelocation"] ?>"><img src="image/payment/<?php echo $result["pay_imagelocation"] ?>" width="200px"></a></td>
                                 <td>

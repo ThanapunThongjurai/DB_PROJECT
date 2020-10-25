@@ -58,7 +58,7 @@ if ($act == 'update') {
         
         <h1 class="text-md-center">ตะกร้าสินค้า</h1>
         <form id="frmcart" name="frmcart" method="post" action="?act=update" class="">
-            <table width="600" border="0" align="center" class="square">
+            <table width="600" border="0" align="center" class="">
                 <tr>
                     <td colspan="5" bgcolor="#FFFFFF">
                 </tr>
@@ -112,8 +112,8 @@ if ($act == 'update') {
                 <tr>
                     <td><a href="index.php">กลับหน้ารายการสินค้า</a></td>
                     <td colspan="4" align="right">
-                        <input type="submit" name="button" id="button" value="ปรับปรุง" />
-                        <input type="button" name="Submit2" value="สั่งซื้อ" onclick="window.location='confirm.php';" />
+                        <input class="btn-outline-info" type="submit" name="button" id="button" value="ปรับปรุง" />
+                        <input class="btn-outline-success" type="button" name="Submit2" value="สั่งซื้อ" onclick="window.location='confirm.php';" />
                     </td>
                 </tr>
             </table>
