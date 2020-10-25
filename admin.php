@@ -60,11 +60,11 @@ while ($item_type_result = $item_type->fetch()) {
             </a>
           </li>
           <li class="nav-item card mt-2">
-            <a class="nav-link" href="admin.php?msg=track_type">
+            <a class="nav-link" href="admin.php?msg=track_owner">
               <svg width="24" height="24" viewBox="0 0 24 24" class="bi bi-handbag-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8 1a2 2 0 0 0-2 2v2H5V3a3 3 0 0 1 6 0v2h-1V3a2 2 0 0 0-2-2zM5 5H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11v1.5a.5.5 0 0 1-1 0V5H6v1.5a.5.5 0 0 1-1 0V5z" />
               </svg>
-              track_type
+              track_owner
             </a>
           </li>
           <li class="nav-item card mt-2">
@@ -169,8 +169,8 @@ while ($item_type_result = $item_type->fetch()) {
                         <td>
 
                         </td>
-                        <td><a type="button" class="btn btn-outline-secondary" href="item_type_update.php?id_item=<?php echo $result["item_type_id"]; ?>">UPDATE</a></td>
-                        <td><a type="button" class="btn btn-outline-danger" href="item_type_delete.php?id_item=<?php echo $result["item_type_id"]; ?>">DELETE</a></td>
+                        <td><a type="button" class="btn btn-outline-secondary" href="item_type_update.php?item_type=<?php echo $result["item_type_id"]; ?>">UPDATE</a></td>
+                        <td><a type="button" class="btn btn-outline-danger" href="item_type_delete.php?item_type=<?php echo $result["item_type_id"]; ?>">DELETE</a></td>
                       </tr>
                     </tbody>
                   <?php
@@ -178,12 +178,12 @@ while ($item_type_result = $item_type->fetch()) {
                 </table>
               <?php
               }
-              if ($_GET["msg"] == "track_type") {
+              if ($_GET["msg"] == "track_owner") {
                 $stmt = $conn->prepare("SELECT * FROM `track_owner_id`");
                 $stmt->execute();                               // run sql before
               ?>
 
-                <h2>TRACK_TYPE</h2>
+                <h2>track_owner</h2>
                 <table class="table">
                   <a type="button" class="btn btn-outline-success btn-lg mb-3 card ml-3" href="track_owner_insert.php">track_owner_insert</a>
                   <thead class="thead-dark">
@@ -203,8 +203,8 @@ while ($item_type_result = $item_type->fetch()) {
                         <td>
 
                         </td>
-                        <td><a type="button" class="btn btn-outline-secondary" href="track_owner_update.php?id_item=<?php echo $result["track_owner_id"]; ?>">UPDATE</a></td>
-                        <td><a type="button" class="btn btn-outline-danger" href="track_owner_delete.php?id_item=<?php echo $result["track_owner_id"]; ?>">DELETE</a></td>
+                        <td><a type="button" class="btn btn-outline-secondary" href="track_owner_update.php?track_owner_id=<?php echo $result["track_owner_id"]; ?>">UPDATE</a></td>
+                        <td><a type="button" class="btn btn-outline-danger" href="track_owner_delete.php?track_owner_id=<?php echo $result["track_owner_id"]; ?>">DELETE</a></td>
                       </tr>
                     </tbody>
                   <?php
