@@ -16,7 +16,7 @@ if (!isset($_SESSION)) {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="<?php echo ($page == 'index') ? 'active' : ''; ?>">
-          <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="index.php">เซฟ และ ปอ ร้านขายเสื้อผ้า online<span class="sr-only">(current)</span></a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" action="index.php" method="GET">
@@ -37,10 +37,6 @@ if (!isset($_SESSION)) {
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="nav-link" href="user_data.php">username : <?php echo $_SESSION["user_fullname"]; ?> แก้ไขเปลี่ยนแปลงข้อมูลผู้ใช้</a>
-          <a class="nav-link" href="cart.php?act=update1">ตะกร้า</a>
-          <a class="nav-link" href="payment.php">แจ้งชำระ</a>
-          <a class="nav-link" href="order_user.php">คำสั่งซื้อของฉัน</a>
-
           <?php
           if ($_SESSION["user_status"] == 1) { ?>
             <a class="nav-link" href="user_data.php">แก้ไขเปลี่ยนแปลงข้อมูลผู้ใช้</a>
@@ -49,6 +45,12 @@ if (!isset($_SESSION)) {
             <a class="nav-link" href="order.php">Admin : ordersของลูกค้า</a>
             <a class="nav-link" href="track.php">Admin : แปะเลขTRACKING ให้order ที่จ่ายเงินแล้ว</a>
           <?php } ?>
+
+          <a class="nav-link" href="cart.php?act=update1">ตะกร้า</a>
+          <a class="nav-link" href="payment.php">แจ้งชำระ</a>
+          <a class="nav-link" href="order_user.php">คำสั่งซื้อของฉัน</a>
+
+
           <a class="nav-link" href="logout.php">ออกจากระบบ</a>
         </div>
       </li>
