@@ -9,7 +9,10 @@ $act = isset($_REQUEST['act']) ? $_REQUEST['act'] : 'update';
 //$act = $_REQUEST['act'];
 //echo $id_item;
 //echo $act;
-
+if (!isset($_SESSION["user_status"])) //0 is normal 
+{
+    header("Location: login.php");
+}
 
 if ($act == 'add' && !empty($id_item)) {
     if (isset($_SESSION['cart'][$id_item])) {
@@ -54,8 +57,8 @@ if ($act == 'update') {
     ?>
     <div class="container card">
 
-        
-        
+
+
         <h1 class="text-md-center">ตะกร้าสินค้า</h1>
         <form id="frmcart" name="frmcart" method="post" action="?act=update" class="">
             <table width="600" border="0" align="center" class="">
@@ -89,26 +92,26 @@ if ($act == 'update') {
                         $sum = $row['item_price'] * $qty;
                         $total += $sum;
                         echo "<tr>";
-                        ?> <td width="334">
-                             <img style="width: 60px; height: 60px;" src="image/item/<?php echo $row["imagelocation"] ?>" class="card-img-top img-thumbnail" alt="Card image cap">
-                            
-                            <?php echo $row["item_name"] ?>.</td><?php 
-                        //echo "<td width='334'>" . $row["item_name"] . "</td>";
-                        echo "<td width='46' align='right'>" . number_format($row["item_price"], 2) . "</td>";
-                        echo "<td width='57' align='right'>";
-                        echo "<input type='text' name='amount[$id_item]' value='$qty' size='2'/></td>";
-                        echo "<td width='93' align='right'>" . number_format($sum, 2) . "</td>";
-                        //remove product
-                        echo "<td width='46' align='center'><a href='cart.php?id_item=" . $id_item . "&act=remove'>ลบ</a></td>";
-                        echo "</tr>";
-                    }
-                    echo "<tr>";
-                    echo "<td colspan='3' bgcolor='#CEE7FF' align='center'><b>ราคารวม</b></td>";
-                    echo "<td align='right' bgcolor='#CEE7FF'>" . "<b>" . number_format($total, 2) . "</b>" . "</td>";
-                    echo "<td align='left' bgcolor='#CEE7FF'></td>";
-                    echo "</tr>";
-                }
-                ?>
+                ?> <td width="334">
+                            <img style="width: 60px; height: 60px;" src="image/item/<?php echo $row["imagelocation"] ?>" class="card-img-top img-thumbnail" alt="Card image cap">
+
+                            <?php echo $row["item_name"] ?>.</td><?php
+                                                                    //echo "<td width='334'>" . $row["item_name"] . "</td>";
+                                                                    echo "<td width='46' align='right'>" . number_format($row["item_price"], 2) . "</td>";
+                                                                    echo "<td width='57' align='right'>";
+                                                                    echo "<input type='text' name='amount[$id_item]' value='$qty' size='2'/></td>";
+                                                                    echo "<td width='93' align='right'>" . number_format($sum, 2) . "</td>";
+                                                                    //remove product
+                                                                    echo "<td width='46' align='center'><a href='cart.php?id_item=" . $id_item . "&act=remove'>ลบ</a></td>";
+                                                                    echo "</tr>";
+                                                                }
+                                                                echo "<tr>";
+                                                                echo "<td colspan='3' bgcolor='#CEE7FF' align='center'><b>ราคารวม</b></td>";
+                                                                echo "<td align='right' bgcolor='#CEE7FF'>" . "<b>" . number_format($total, 2) . "</b>" . "</td>";
+                                                                echo "<td align='left' bgcolor='#CEE7FF'></td>";
+                                                                echo "</tr>";
+                                                            }
+                                                                    ?>
                 <tr>
                     <td><a href="index.php">กลับหน้ารายการสินค้า</a></td>
                     <td colspan="4" align="right">

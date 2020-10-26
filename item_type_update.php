@@ -56,7 +56,7 @@ if (isset($_GET['msg'])) {
 
         <form action="item_type_update_SQL.php" method="POST">
             <label for="exampleInputEmail1">item_type_id</label>
-            <input name="item_type_id" class="form-control" aria-describedby="emailHelp" value="<?php echo $_GET["item_type"]; ?>" disabled>
+            <input name="item_type_id" class="form-control" aria-describedby="emailHelp" value="<?php echo $_GET["item_type"]; ?>">
             <label for="exampleInputEmail1">item_type</label>
             <input name="item_type" class="form-control" aria-describedby="emailHelp">
 

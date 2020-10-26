@@ -67,7 +67,7 @@ if (isset($_GET['msg'])) {
 
     <form action="track_owner_update_SQL.php?track_owner_id=<?php echo $track_owner_id; ?>" method="POST">
       <label for="exampleInputEmail1">track_owner_id</label>
-      <input name="track_owner_id" class="form-control" aria-describedby="emailHelp" value="<?php echo $track_owner_id ; ?>" disabled>
+      <input name="track_owner_id" class="form-control" aria-describedby="emailHelp" value="<?php echo $track_owner_id ; ?>">
       <label for="exampleInputEmail1">track_owner_name</label>
       <input name="track_owner_name" class="form-control" aria-describedby="emailHelp">
 

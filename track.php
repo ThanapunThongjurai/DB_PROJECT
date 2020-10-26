@@ -25,20 +25,11 @@ if ($_SESSION["user_status"] == 0) //0 is normal
     <?php include_once (__DIR__) . ('/include/navbar2.php');
     $user =  $_SESSION["user_username"];
     $query = $conn->prepare("SELECT 
-                            orders.order_id, 
-                            orders.order_date,
-                            orders.order_date,
-                            payment.pay_id,
-                            payment.pay_price, 
-                            payment.pay_status,
-                            payment.pay_imagelocation,
-                            track.track_id,
-                            track.track_status,
-                            track.track_owner,
-                            track.track_no
+                            *
                             FROM orders 
                             INNER JOIN payment ON orders.pay_id = payment.pay_id
                             INNER JOIN track ON orders.track_id = track.track_id
+                            INNER JOIN user ON orders.order_username = user.user_username
                             WHERE payment.pay_status ='pay' AND track.track_status ='wait'
                             ORDER BY orders.order_date DESC");
 
@@ -70,7 +61,10 @@ if ($_SESSION["user_status"] == 0) //0 is normal
                             $order_id = $result['order_id'];
                         ?>
                             <tr>
-                                <th><a href="order_detail.php?order_id=<?php echo $order_id; ?>">#<?php echo $order_id; ?><br>กดเพื่อดูของที่ต้องจัดส่ง</a></th>
+                                <th><a href="order_detail.php?order_id=<?php echo $order_id; ?>">#<?php echo $order_id; ?><br>กดเพื่อดูของที่ต้องจัดส่ง</a>
+                            
+                            <p>ที่อยู่จัดส่ง : <?php echo $result["user_address"];?></p>
+                            </th>
                                 <td>
                                     <p>ต้องจัดส่ง <br> ชำระเงินแล้ว</p>
                                 </td>
